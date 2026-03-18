@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Professional Cybersecurity Expert — Penetration Testing, VAPT, Ethical Hacking. Available for freelance worldwide.">
+<meta name="keywords" content="cybersecurity,penetration testing,ethical hacker,VAPT,bug bounty,freelance,security researcher">
+<meta property="og:title" content="CyberSec Expert Portfolio">
+<meta property="og:description" content="Professional Cybersecurity Expert — Hire me for VAPT, Pentest & Security Audits">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>CyberSec Portfolio — Your Name</title>
+<link rel="manifest" href="#" id="pwa-manifest">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+<style>
+:root{
+  --n:#00ff9d;--n2:#00cfff;--red:#ff2d55;--gold:#ffd60a;
+  --bg:#020c0e;--bg2:#040f12;--card:#0a1e22;
+  --border:rgba(0,255,157,.18);--bh:rgba(0,255,157,.45);
+  --text:#b0d4d8;--dim:rgba(176,212,216,.55);--white:#e8f4f6;
+  --glow:0 0 20px rgba(0,255,157,.4);--glow2:0 0 20px rgba(0,207,255,.3);
+  --tr:all .32s cubic-bezier(.4,0,.2,1);
+  --font:'Rajdhani','Noto Sans Bengali',sans-serif;
+  --mono:'Share Tech Mono',monospace;
+  --orb:'Orbitron',monospace;
+}
+[data-theme=light]{
+  --bg:#f0f4f5;--bg2:#e4ecee;--card:#fff;
+  --border:rgba(0,130,90,.2);--bh:rgba(0,130,90,.5);
+  --text:#1a3a3e;--dim:rgba(26,58,62,.6);--white:#0d1f22;
+  --n:#007a4d;--n2:#006699;--red:#cc1133;
+  --glow:0 0 16px rgba(0,122,77,.25);--glow2:0 0 16px rgba(0,102,153,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;transition:background .4s,color .4s;cursor:none}
+::selection{background:var(--n);color:#000}
+a{text-decoration:none}
+
+/* CURSOR */
+#cursor{position:fixed;width:12px;height:12px;background:var(--n);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,opacity .3s;box-shadow:var(--glow);mix-blend-mode:difference}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--n);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .15s,width .2s,height .2s;opacity:.5}
+body:hover #cursor{opacity:1}
+a:hover~#cursor,button:hover~#cursor{transform:translate(-50%,-50%) scale(2)}
+
+/* SCANLINES */
+[data-theme=dark] body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px);pointer-events:none;z-index:9998}
+
+/* CANVAS */
+#net-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5;transition:opacity .4s}
+[data-theme=light] #net-canvas{opacity:.15}
+
+/* GOOGLE TRANSLATE HIDDEN */
+.goog-te-banner-frame,.skiptranslate,.goog-te-gadget{display:none!important}
+body{top:0!important}
+#google_translate_element{display:none}
+
+/* PAGE TRANSITION */
+#pt{position:fixed;inset:0;z-index:99997;pointer-events:none;display:grid;grid-template-columns:repeat(5,1fr)}
+.pt-col{background:#000;transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.77,0,.18,1)}
+.pt-col:nth-child(2){transition-delay:.05s}.pt-col:nth-child(3){transition-delay:.1s}.pt-col:nth-child(4){transition-delay:.05s}
+body.transitioning .pt-col{transform:scaleY(1)}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:#000;z-index:99996;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);transition:opacity .6s,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.ld-logo{font-family:var(--orb);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:#00ff9d;text-shadow:0 0 30px rgba(0,255,157,.8);margin-bottom:30px;letter-spacing:4px;animation:glow-pulse 1.5s infinite}
+.ld-logo span{color:#ff2d55}
+@keyframes glow-pulse{0%,100%{text-shadow:0 0 20px rgba(0,255,157,.6)}50%{text-shadow:0 0 50px rgba(0,255,157,1),0 0 80px rgba(0,255,157,.4)}}
+.ld-box{width:min(480px,90vw);background:#050e10;border:1px solid rgba(0,255,157,.3);border-radius:4px;overflow:hidden}
+.ld-bar-top{padding:8px 14px;background:#0a1a1e;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(0,255,157,.15)}
+.ld-dot{width:10px;height:10px;border-radius:50%}.ld-dot.r{background:#ff2d55}.ld-dot.y{background:#ffd60a}.ld-dot.g{background:#30d158}
+.ld-title{font-size:.65rem;color:rgba(0,255,157,.4);margin-left:8px;letter-spacing:2px}
+.ld-body{padding:16px 20px;min-height:160px;font-size:.76rem;line-height:1.9}
+.ld-line{display:none}.ld-line.show{display:block}
+.ld-line .ok{color:#00ff9d}.ld-line .err{color:#ff2d55}.ld-line .cmd{color:#00cfff}.ld-line .warn{color:#ffd60a}
+.ld-progress{padding:0 20px;height:3px;background:rgba(0,255,157,.1);margin:0 20px 6px}
+.ld-bar{height:3px;background:linear-gradient(90deg,#00ff9d,#00cfff);box-shadow:0 0 10px rgba(0,255,157,.6);width:0%;transition:width .3s}
+.ld-pct{text-align:right;padding:4px 20px 16px;font-size:.68rem;color:rgba(0,255,157,.6)}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 5%;height:62px;display:flex;justify-content:space-between;align-items:center;background:rgba(2,12,14,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .4s}
+[data-theme=light] nav{background:rgba(240,244,245,.92)}
+.nav-logo{font-family:var(--orb);font-size:1rem;font-weight:900;color:var(--n);text-shadow:var(--glow);letter-spacing:2px;flex-shrink:0}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:1.8rem;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{font-family:var(--mono);font-size:.7rem;color:var(--dim);letter-spacing:2px;text-transform:uppercase;transition:color .3s;white-space:nowrap}
+.nav-links a:hover{color:var(--n)}
+.nav-right{display:flex;align-items:center;gap:10px}
+
+/* LANG SELECTOR */
+.lang-wrap{position:relative}
+.lang-btn{display:flex;align-items:center;gap:6px;padding:6px 11px;background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:.68rem;letter-spacing:1px;cursor:pointer;border-radius:3px;transition:var(--tr)}
+.lang-btn:hover{border-color:var(--n);color:var(--n)}
+.lang-arrow{font-size:.5rem;transition:transform .3s}
+.lang-wrap.open .lang-arrow{transform:rotate(180deg)}
+.lang-search{width:100%;background:var(--bg2);border:none;border-bottom:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:.7rem;padding:10px 14px;outline:none}
+.lang-search::placeholder{color:var(--dim)}
+.lang-drop{position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;width:220px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.lang-wrap.open .lang-drop{opacity:1;visibility:visible;transform:translateY(0)}
+.lang-list{max-height:280px;overflow-y:auto}
+.lang-list::-webkit-scrollbar{width:4px}.lang-list::-webkit-scrollbar-track{background:var(--bg2)}.lang-list::-webkit-scrollbar-thumb{background:var(--n);border-radius:2px}
+.lang-opt{display:flex;align-items:center;gap:9px;padding:9px 14px;font-family:var(--mono);font-size:.67rem;color:var(--text);cursor:pointer;transition:background .2s;letter-spacing:.5px}
+.lang-opt:hover{background:rgba(0,255,157,.07);color:var(--n)}
+.lang-opt.active{color:var(--n);background:rgba(0,255,157,.05)}
+.lang-opt .lf{font-size:.95rem;flex-shrink:0}
+.lang-region{padding:6px 14px 3px;font-family:var(--mono);font-size:.58rem;color:var(--dim);letter-spacing:2px;text-transform:uppercase;border-top:1px solid var(--border)}
+
+/* THEME & HAMBURGER */
+.icon-btn{width:36px;height:36px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--tr)}
+.icon-btn:hover{border-color:var(--n);color:var(--n);box-shadow:var(--glow)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.ham span{display:block;width:22px;height:2px;background:var(--n);border-radius:2px;transition:var(--tr)}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* MOBILE NAV */
+.m-nav{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(2,12,14,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:999;padding:16px 5%;flex-direction:column}
+[data-theme=light] .m-nav{background:rgba(240,244,245,.97)}
+.m-nav.open{display:flex}
+.m-nav a{font-family:var(--mono);font-size:.8rem;color:var(--dim);padding:12px 0;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:2px;transition:color .2s}
+.m-nav a:hover{color:var(--n)}
+
+/* STATUS BAR */
+.statusbar{position:fixed;bottom:0;width:100%;z-index:999;padding:5px 5%;background:rgba(2,12,14,.92);border-top:1px solid var(--border);font-family:var(--mono);font-size:.62rem;color:rgba(0,255,157,.45);display:flex;gap:2rem;align-items:center;flex-wrap:wrap;transition:background .4s}
+[data-theme=light] .statusbar{background:rgba(240,244,245,.95);color:rgba(0,122,77,.6)}
+.s-dot{width:5px;height:5px;border-radius:50%;background:var(--n);box-shadow:var(--glow);animation:blink 1.5s infinite;display:inline-block;vertical-align:middle;margin-right:4px}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:100px 8%}
+.s-head{margin-bottom:50px;display:flex;align-items:center;gap:14px}
+.s-num{font-family:var(--orb);font-size:.62rem;color:var(--n);opacity:.5;letter-spacing:3px;white-space:nowrap}
+.s-title{font-family:var(--orb);font-size:clamp(1.3rem,3vw,2rem);font-weight:900;color:var(--white);letter-spacing:2px;white-space:nowrap}
+.s-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);min-width:20px}
+.grid-deco{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;opacity:.4}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:80px 8%}
+.hero-content{max-width:660px}
+.h-tag{font-family:var(--mono);font-size:.72rem;color:var(--n);letter-spacing:4px;margin-bottom:1.3rem;opacity:0;animation:fadeUp .8s .5s forwards}
+.h-tag::before{content:'[ '}.h-tag::after{content:' ]'}
+.h-name{font-family:var(--orb);font-size:clamp(2.4rem,6vw,4.8rem);font-weight:900;line-height:1;color:var(--white);margin-bottom:.5rem;opacity:0;animation:fadeUp .8s .7s forwards}
+.h-name .acc{color:var(--n);text-shadow:var(--glow)}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;font-family:var(--orb);font-size:inherit;font-weight:inherit;pointer-events:none}
+.glitch::before{color:var(--red);animation:glitch 5s 3s infinite;opacity:.6}
+.glitch::after{color:var(--n2);animation:glitch 5s 3.2s infinite;opacity:.4}
+.h-role{font-family:var(--mono);font-size:1rem;color:var(--n2);margin-bottom:1.3rem;min-height:1.5rem;opacity:0;animation:fadeUp .8s .9s forwards}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--n2);margin-left:2px;vertical-align:middle;animation:blink .8s infinite}
+.h-desc{font-size:.93rem;line-height:1.8;color:var(--dim);max-width:490px;margin-bottom:2.2rem;opacity:0;animation:fadeUp .8s 1.1s forwards}
+.h-btns{display:flex;gap:.9rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s 1.3s forwards}
+.btn{padding:11px 28px;font-family:var(--orb);font-size:.68rem;font-weight:700;letter-spacing:2px;cursor:pointer;transition:var(--tr);clip-path:polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%);border:none}
+.btn-p{background:var(--n);color:#000;box-shadow:var(--glow)}
+.btn-p:hover{background:transparent;color:var(--n);outline:1px solid var(--n);box-shadow:0 0 30px rgba(0,255,157,.5)}
+.btn-s{background:transparent;color:var(--n2);border:1px solid var(--n2)}
+.btn-s:hover{background:rgba(0,207,255,.1);box-shadow:var(--glow2)}
+.btn-r{background:transparent;color:var(--red);border:1px solid var(--red)}
+.btn-r:hover{background:rgba(255,45,85,.1)}
+.h-stats{position:absolute;right:8%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1.3rem;opacity:0;animation:fadeUp .8s 1.5s forwards}
+.stat-box{border:1px solid var(--border);padding:16px 20px;background:rgba(10,30,34,.5);backdrop-filter:blur(8px);text-align:center;position:relative;overflow:hidden;transition:border-color .3s;cursor:default}
+[data-theme=light] .stat-box{background:rgba(255,255,255,.7)}
+.stat-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--n),transparent);animation:scanh 2s linear infinite}
+.stat-box:hover{border-color:var(--n)}
+.stat-n{font-family:var(--orb);font-size:1.7rem;font-weight:900;color:var(--n);text-shadow:var(--glow);display:block}
+.stat-l{font-family:var(--mono);font-size:.58rem;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+
+/* ABOUT */
+#about{background:linear-gradient(180deg,transparent,rgba(0,255,157,.015),transparent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:start}
+.term{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color .3s}
+.term:hover{border-color:var(--n)}
+.term-bar{padding:9px 14px;background:rgba(0,0,0,.35);display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--border)}
+[data-theme=light] .term-bar{background:rgba(0,0,0,.07)}
+.tdot{width:10px;height:10px;border-radius:50%}
+.tdot.r{background:#ff2d55}.tdot.y{background:#ffd60a}.tdot.g{background:#30d158}
+.term-title{font-family:var(--mono);font-size:.63rem;color:var(--dim);margin-left:8px;letter-spacing:1px}
+.term-body{padding:20px;font-family:var(--mono);font-size:.76rem;line-height:2;color:var(--text)}
+.tp{color:var(--n)}.tc{color:var(--n2)}.to{color:var(--dim);padding-left:14px;display:block}.tk{color:var(--red)}.tv{color:var(--white)}
+.about-p{line-height:1.85;color:var(--dim);margin-bottom:1rem;font-size:.92rem}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.3rem}
+.tag{padding:4px 12px;font-family:var(--mono);font-size:.66rem;border:1px solid var(--border);color:var(--n);letter-spacing:1px;background:rgba(0,255,157,.04);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);transition:var(--tr);cursor:default}
+.tag:hover{background:rgba(0,255,157,.1);border-color:var(--n)}
+
+/* SKILLS */
+#skills{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sk-card{background:var(--card);border:1px solid var(--border);padding:22px;position:relative;overflow:hidden;transition:var(--tr);cursor:default}
+.sk-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--n),var(--n2));transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.sk-card:hover{border-color:var(--n);transform:translateY(-4px);box-shadow:0 10px 35px rgba(0,0,0,.3)}
+.sk-card:hover::after{transform:scaleX(1)}
+.sk-ico{font-size:1.5rem;margin-bottom:9px;display:block}
+.sk-name{font-family:var(--orb);font-size:.7rem;font-weight:700;color:var(--white);letter-spacing:1px;margin-bottom:10px}
+.sk-bw{height:3px;background:rgba(0,255,157,.1);overflow:hidden}
+.sk-b{height:100%;background:linear-gradient(90deg,var(--n),var(--n2));box-shadow:0 0 8px rgba(0,255,157,.5);transition:width 1.5s cubic-bezier(.4,0,.2,1);width:0%}
+.sk-pills{margin-top:9px;display:flex;flex-wrap:wrap;gap:4px}
+.sk-pill{font-family:var(--mono);font-size:.6rem;color:var(--dim);border:1px solid rgba(0,255,157,.12);padding:2px 7px}
+
+/* SKILL TREE */
+#skilltree{background:var(--bg)}
+.tree-wrap{overflow-x:auto;padding-bottom:20px}
+#skill-tree-svg{display:block;margin:0 auto;min-width:700px}
+
+/* CERTS */
+#certs{background:var(--bg2)}
+.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cert-card{background:var(--card);border:1px solid var(--border);padding:22px 16px;text-align:center;transition:var(--tr);cursor:default;position:relative;overflow:hidden}
+.cert-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,255,157,.05),transparent);opacity:0;transition:opacity .3s}
+.cert-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.cert-card:hover::before{opacity:1}
+.cert-ico{font-size:2.2rem;margin-bottom:10px;display:block}
+.cert-name{font-family:var(--orb);font-size:.72rem;font-weight:700;color:var(--white);letter-spacing:1px;margin-bottom:5px}
+.cert-org{font-family:var(--mono);font-size:.62rem;color:var(--n);letter-spacing:1px}
+.cert-year{font-family:var(--mono);font-size:.58rem;color:var(--dim);margin-top:4px}
+.cert-badge{position:absolute;top:10px;right:10px;width:18px;height:18px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem}
+
+/* TIMELINE */
+#timeline{background:linear-gradient(180deg,transparent,rgba(0,207,255,.015),transparent)}
+.tl{position:relative;padding-left:40px}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--n),var(--n2),transparent)}
+.tl-item{position:relative;margin-bottom:40px}
+.tl-dot{position:absolute;left:-35px;top:5px;width:12px;height:12px;background:var(--n);border-radius:50%;box-shadow:var(--glow);animation:blink 2s infinite}
+.tl-dot.n2{background:var(--n2);box-shadow:var(--glow2)}
+.tl-year{font-family:var(--orb);font-size:.65rem;color:var(--n);letter-spacing:2px;margin-bottom:5px}
+.tl-role{font-family:var(--orb);font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:5px;letter-spacing:1px}
+.tl-company{font-family:var(--mono);font-size:.72rem;color:var(--n2);margin-bottom:8px;letter-spacing:1px}
+.tl-desc{font-size:.88rem;color:var(--dim);line-height:1.75}
+
+/* PROJECTS */
+#projects{background:var(--bg2)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.proj-card{background:var(--card);border:1px solid var(--border);overflow:hidden;position:relative;transition:var(--tr)}
+.proj-card:hover{border-color:rgba(0,207,255,.45);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.proj-card:hover .proj-ov{opacity:1}
+.proj-card:hover .proj-links{transform:translateY(0);opacity:1}
+.proj-head{padding:20px 20px 12px;display:flex;justify-content:space-between;align-items:center}
+.proj-type{font-family:var(--mono);font-size:.6rem;color:var(--n);letter-spacing:2px;background:rgba(0,255,157,.08);border:1px solid rgba(0,255,157,.2);padding:3px 8px}
+.proj-status{font-family:var(--mono);font-size:.6rem;display:flex;align-items:center;gap:5px;color:var(--dim)}
+.pdot{width:6px;height:6px;background:var(--n);border-radius:50%;box-shadow:0 0 8px var(--n);animation:blink 1s infinite}
+.proj-body{padding:0 20px 20px}
+.proj-title{font-family:var(--orb);font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:1px}
+.proj-desc{font-size:.83rem;color:var(--dim);line-height:1.7;margin-bottom:14px}
+.tech-tags{display:flex;flex-wrap:wrap;gap:5px}
+.t-tag{font-family:var(--mono);font-size:.6rem;color:var(--n2);border:1px solid rgba(0,207,255,.2);padding:2px 7px;background:rgba(0,207,255,.05)}
+.proj-ov{position:absolute;inset:0;background:rgba(0,10,12,.75);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
+.proj-links{display:flex;gap:12px;transform:translateY(14px);opacity:0;transition:var(--tr)}
+.plink{padding:8px 20px;font-family:var(--mono);font-size:.7rem;letter-spacing:1px;transition:var(--tr)}
+.plink.p{background:var(--n);color:#000;font-weight:700}
+.plink.s{border:1px solid var(--n2);color:var(--n2)}
+
+/* HALL OF FAME */
+#hof{background:var(--bg)}
+.hof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.hof-card{background:var(--card);border:1px solid rgba(255,214,10,.2);padding:22px;position:relative;overflow:hidden;transition:var(--tr)}
+.hof-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.hof-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hof-rank{font-family:var(--orb);font-size:2rem;font-weight:900;color:var(--gold);text-shadow:0 0 20px rgba(255,214,10,.4);display:block;margin-bottom:8px}
+.hof-title{font-family:var(--orb);font-size:.78rem;font-weight:700;color:var(--white);letter-spacing:1px;margin-bottom:6px}
+.hof-platform{font-family:var(--mono);font-size:.65rem;color:var(--gold);letter-spacing:1px;margin-bottom:8px}
+.hof-desc{font-size:.82rem;color:var(--dim);line-height:1.7}
+.hof-reward{font-family:var(--mono);font-size:.72rem;color:var(--n);margin-top:10px;letter-spacing:1px}
+
+/* TOOLS */
+#tools{background:var(--bg2)}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tool-item{background:var(--card);border:1px solid var(--border);padding:16px;display:flex;align-items:center;gap:12px;transition:var(--tr);cursor:default}
+.tool-item:hover{border-color:var(--n);transform:translateX(4px)}
+.tool-ico{font-size:1.4rem;flex-shrink:0}
+.tool-name{font-family:var(--mono);font-size:.72rem;color:var(--white);letter-spacing:1px;display:block}
+.tool-cat{font-family:var(--mono);font-size:.58rem;color:var(--dim);letter-spacing:1px}
+
+/* SERVICES */
+#services{background:linear-gradient(180deg,transparent,rgba(0,255,157,.015),transparent)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--card);border:1px solid var(--border);padding:28px;position:relative;overflow:hidden;transition:var(--tr);cursor:default}
+.svc-card.featured{border-color:var(--n);background:linear-gradient(135deg,rgba(0,255,157,.05),rgba(10,30,34,.8))}
+.svc-card.featured::before{content:'POPULAR';position:absolute;top:12px;right:-20px;background:var(--n);color:#000;font-family:var(--orb);font-size:.55rem;font-weight:700;letter-spacing:2px;padding:3px 30px;transform:rotate(45deg)}
+.svc-card:hover{transform:translateY(-5px);border-color:var(--n)}
+.svc-ico{font-size:2rem;margin-bottom:12px;display:block}
+.svc-name{font-family:var(--orb);font-size:.85rem;font-weight:700;color:var(--white);letter-spacing:1px;margin-bottom:8px}
+.svc-price{font-family:var(--orb);font-size:1.5rem;font-weight:900;color:var(--n);margin-bottom:14px}
+.svc-price span{font-size:.65rem;color:var(--dim);font-weight:400}
+.svc-feats{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.svc-feats li{font-family:var(--mono);font-size:.68rem;color:var(--dim);display:flex;align-items:center;gap:8px}
+.svc-feats li::before{content:'✓';color:var(--n);font-weight:700;flex-shrink:0}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg2)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.test-card{background:var(--card);border:1px solid var(--border);padding:24px;position:relative;transition:var(--tr)}
+.test-card:hover{border-color:var(--n2);transform:translateY(-3px)}
+.test-card::before{content:'"';font-family:var(--orb);font-size:3rem;color:var(--n);opacity:.2;position:absolute;top:10px;left:16px;line-height:1}
+.test-text{font-size:.88rem;color:var(--dim);line-height:1.8;margin-bottom:16px;padding-top:10px}
+.test-author{display:flex;align-items:center;gap:10px}
+.test-avatar{width:36px;height:36px;background:linear-gradient(135deg,var(--n),var(--n2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:.85rem;flex-shrink:0}
+.test-name{font-family:var(--orb);font-size:.72rem;color:var(--white);letter-spacing:1px;display:block}
+.test-role{font-family:var(--mono);font-size:.62rem;color:var(--dim);letter-spacing:1px}
+.stars{color:var(--gold);font-size:.8rem;margin-bottom:8px;letter-spacing:2px}
+
+/* BLOG */
+#blog{background:var(--bg)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:var(--tr)}
+.blog-card:hover{border-color:var(--n);transform:translateY(-4px)}
+.blog-cat{padding:6px 12px;font-family:var(--mono);font-size:.6rem;color:var(--n);background:rgba(0,255,157,.08);border-bottom:1px solid var(--border);letter-spacing:2px;display:flex;justify-content:space-between;align-items:center}
+.blog-date{color:var(--dim)}
+.blog-body{padding:18px}
+.blog-title{font-family:var(--orb);font-size:.8rem;font-weight:700;color:var(--white);letter-spacing:1px;margin-bottom:9px;line-height:1.4}
+.blog-excerpt{font-size:.82rem;color:var(--dim);line-height:1.7;margin-bottom:14px}
+.blog-read{font-family:var(--mono);font-size:.65rem;color:var(--n2);letter-spacing:1px}
+.blog-read:hover{color:var(--n)}
+
+/* INTERACTIVE TERMINAL */
+#terminal-sec{background:var(--bg2)}
+.iterm{background:#000;border:1px solid var(--border);border-radius:4px;overflow:hidden;max-width:800px;margin:0 auto}
+.iterm-bar{padding:10px 14px;background:#0a1a1e;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--border)}
+.iterm-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:8px;letter-spacing:2px;flex:1}
+.iterm-hint{font-family:var(--mono);font-size:.6rem;color:rgba(0,255,157,.4);letter-spacing:1px}
+.iterm-output{padding:20px;font-family:var(--mono);font-size:.78rem;line-height:1.8;color:var(--text);min-height:200px;max-height:320px;overflow-y:auto}
+.iterm-output::-webkit-scrollbar{width:4px}.iterm-output::-webkit-scrollbar-thumb{background:var(--n)}
+.iterm-line{display:block;margin-bottom:2px}
+.iterm-line.p{color:var(--n)}.iterm-line.e{color:var(--red)}.iterm-line.w{color:var(--gold)}.iterm-line.i{color:var(--n2)}.iterm-line.d{color:var(--dim)}
+.iterm-input-row{display:flex;align-items:center;padding:12px 20px;border-top:1px solid var(--border);background:rgba(0,0,0,.3)}
+.iterm-prompt{font-family:var(--mono);font-size:.78rem;color:var(--n);margin-right:8px;white-space:nowrap}
+.iterm-input{flex:1;background:transparent;border:none;outline:none;color:var(--white);font-family:var(--mono);font-size:.78rem;letter-spacing:.5px}
+
+/* CTF */
+#ctf{background:var(--bg)}
+.ctf-box{max-width:700px;margin:0 auto;background:var(--card);border:1px solid var(--border);overflow:hidden}
+.ctf-head{padding:16px 20px;background:rgba(0,0,0,.3);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.ctf-title{font-family:var(--orb);font-size:.82rem;color:var(--white);letter-spacing:1px}
+.ctf-pts{font-family:var(--mono);font-size:.7rem;color:var(--gold);letter-spacing:1px}
+.ctf-body{padding:24px}
+.ctf-challenge{font-family:var(--mono);font-size:.8rem;color:var(--n2);background:rgba(0,207,255,.05);border:1px solid rgba(0,207,255,.2);padding:16px;line-height:1.7;margin-bottom:16px;word-break:break-all}
+.ctf-hint{font-size:.8rem;color:var(--dim);margin-bottom:16px;line-height:1.6}
+.ctf-input-row{display:flex;gap:10px}
+.ctf-input{flex:1;background:var(--bg2);border:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:.78rem;padding:10px 14px;outline:none;transition:var(--tr)}
+.ctf-input:focus{border-color:var(--n)}
+.ctf-submit{padding:10px 20px;background:var(--n);color:#000;font-family:var(--orb);font-size:.68rem;font-weight:700;letter-spacing:2px;cursor:pointer;border:none;transition:var(--tr)}
+.ctf-submit:hover{box-shadow:var(--glow)}
+.ctf-result{margin-top:14px;padding:12px;font-family:var(--mono);font-size:.76rem;display:none;border-radius:2px}
+.ctf-result.win{background:rgba(0,255,157,.1);border:1px solid var(--n);color:var(--n)}
+.ctf-result.lose{background:rgba(255,45,85,.1);border:1px solid var(--red);color:var(--red)}
+
+/* HACK ME */
+#hackme{background:var(--bg2)}
+.hackme-inner{max-width:700px;margin:0 auto;text-align:center}
+.hackme-inner p{font-size:.92rem;color:var(--dim);line-height:1.8;margin-bottom:1.5rem}
+.hm-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+.hm-stat{text-align:center}
+.hm-n{font-family:var(--orb);font-size:1.5rem;font-weight:900;color:var(--n);display:block}
+.hm-l{font-family:var(--mono);font-size:.62rem;color:var(--dim);letter-spacing:2px}
+.rules{text-align:left;background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:2rem}
+.rules-title{font-family:var(--orb);font-size:.78rem;color:var(--n);letter-spacing:1px;margin-bottom:12px}
+.rules li{font-family:var(--mono);font-size:.72rem;color:var(--dim);line-height:2;padding-left:16px;position:relative}
+.rules li::before{content:'→';position:absolute;left:0;color:var(--n)}
+
+/* GITHUB STATS */
+#ghstats{background:var(--bg)}
+.gh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.gh-card{background:var(--card);border:1px solid var(--border);padding:18px;text-align:center;transition:var(--tr)}
+.gh-card:hover{border-color:var(--n);transform:translateY(-3px)}
+.gh-n{font-family:var(--orb);font-size:1.6rem;font-weight:900;color:var(--n);text-shadow:var(--glow);display:block}
+.gh-l{font-family:var(--mono);font-size:.6rem;color:var(--dim);letter-spacing:2px;text-transform:uppercase}
+.gh-user{font-family:var(--mono);font-size:.78rem;color:var(--n2);text-align:center;margin-bottom:1rem}
+.gh-repos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gh-repo{background:var(--card);border:1px solid var(--border);padding:14px;transition:var(--tr)}
+.gh-repo:hover{border-color:var(--n2)}
+.gh-rname{font-family:var(--mono);font-size:.72rem;color:var(--n2);margin-bottom:5px;letter-spacing:1px}
+.gh-rdesc{font-size:.78rem;color:var(--dim);line-height:1.6;margin-bottom:8px}
+.gh-rmeta{display:flex;gap:12px;font-family:var(--mono);font-size:.62rem;color:var(--dim)}
+
+/* CONTACT */
+#contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.c-info h3{font-family:var(--orb);font-size:.95rem;color:var(--white);margin-bottom:.8rem;letter-spacing:1px}
+.c-info p{color:var(--dim);line-height:1.85;margin-bottom:1.5rem;font-size:.88rem}
+.c-items{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem}
+.c-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--border);background:var(--card);transition:var(--tr)}
+.c-item:hover{border-color:var(--n);transform:translateX(4px)}
+.c-ico{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid var(--n);color:var(--n);font-size:.85rem;flex-shrink:0}
+.c-label{font-family:var(--mono);font-size:.58rem;color:var(--dim);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:2px}
+.c-val{font-size:.85rem;color:var(--white)}
+.c-actions{display:flex;gap:10px;flex-wrap:wrap}
+.c-form{display:flex;flex-direction:column;gap:13px}
+.f-label{font-family:var(--mono);font-size:.6rem;color:var(--n);letter-spacing:2px;margin-bottom:4px;display:block}
+.f-input,.f-textarea{width:100%;background:var(--card);border:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:.76rem;padding:10px 13px;outline:none;transition:var(--tr);resize:none}
+.f-input:focus,.f-textarea:focus{border-color:var(--n);box-shadow:0 0 12px rgba(0,255,157,.1)}
+.f-textarea{height:100px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f-select{width:100%;background:var(--card);border:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:.76rem;padding:10px 13px;outline:none;transition:var(--tr)}
+.f-select:focus{border-color:var(--n)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;padding:22px 8% 46px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:rgba(2,12,14,.9);flex-wrap:wrap;gap:10px;transition:background .4s}
+[data-theme=light] footer{background:rgba(240,244,245,.95)}
+.f-logo{font-family:var(--orb);font-size:.9rem;color:var(--n);text-shadow:var(--glow)}
+.f-copy{font-family:var(--mono);font-size:.62rem;color:var(--dim);letter-spacing:1px}
+.f-links{display:flex;gap:1.2rem}
+.f-links a{font-family:var(--mono);font-size:.65rem;color:var(--dim);letter-spacing:1px;transition:color .2s}
+.f-links a:hover{color:var(--n)}
+
+/* AI CHATBOT */
+#chatbot{position:fixed;bottom:55px;right:20px;z-index:5000;font-family:var(--font)}
+.chat-toggle{width:52px;height:52px;background:linear-gradient(135deg,var(--n),var(--n2));border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:var(--glow);transition:var(--tr);position:relative}
+.chat-toggle:hover{transform:scale(1.1);box-shadow:0 0 30px rgba(0,255,157,.6)}
+.chat-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:var(--red);border-radius:50%;font-family:var(--mono);font-size:.6rem;display:flex;align-items:center;justify-content:center;color:#fff;animation:blink 2s infinite}
+.chat-window{position:absolute;bottom:65px;right:0;width:320px;background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column}
+.chat-window.open{display:flex}
+.chat-head{padding:12px 16px;background:rgba(0,0,0,.3);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.chat-avatar{width:30px;height:30px;background:linear-gradient(135deg,var(--n),var(--n2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.chat-name{font-family:var(--orb);font-size:.72rem;color:var(--white);letter-spacing:1px}
+.chat-status{font-family:var(--mono);font-size:.58rem;color:var(--n);display:flex;align-items:center;gap:4px}
+.chat-close{margin-left:auto;background:none;border:none;color:var(--dim);cursor:pointer;font-size:.85rem;transition:color .2s;padding:0}
+.chat-close:hover{color:var(--red)}
+.chat-messages{padding:14px;height:250px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.chat-messages::-webkit-scrollbar{width:3px}.chat-messages::-webkit-scrollbar-thumb{background:var(--n)}
+.chat-msg{max-width:85%;padding:9px 12px;border-radius:3px;font-size:.78rem;line-height:1.6}
+.chat-msg.bot{background:rgba(0,255,157,.08);border:1px solid var(--border);color:var(--text);align-self:flex-start;border-radius:0 8px 8px 8px}
+.chat-msg.user{background:var(--n);color:#000;align-self:flex-end;border-radius:8px 0 8px 8px;font-family:var(--mono)}
+.chat-quick{padding:0 14px 10px;display:flex;gap:6px;flex-wrap:wrap}
+.qbtn{padding:4px 10px;font-family:var(--mono);font-size:.6rem;border:1px solid var(--border);color:var(--n);background:transparent;cursor:pointer;border-radius:2px;transition:var(--tr);letter-spacing:.5px}
+.qbtn:hover{background:rgba(0,255,157,.1);border-color:var(--n)}
+.chat-input-row{display:flex;border-top:1px solid var(--border)}
+.chat-input{flex:1;background:transparent;border:none;outline:none;color:var(--white);font-family:var(--mono);font-size:.76rem;padding:10px 12px}
+.chat-send{padding:10px 14px;background:var(--n);border:none;color:#000;cursor:pointer;font-size:.8rem;transition:var(--tr)}
+.chat-send:hover{background:var(--n2)}
+
+/* CVE FEED */
+#cvefeed{position:fixed;bottom:55px;left:20px;z-index:5000}
+.cve-toggle{padding:8px 14px;background:var(--card);border:1px solid var(--border);color:var(--n);font-family:var(--mono);font-size:.65rem;letter-spacing:1px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:var(--tr)}
+.cve-toggle:hover{border-color:var(--n)}
+.cve-panel{position:absolute;bottom:46px;left:0;width:300px;background:var(--card);border:1px solid var(--border);display:none;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.cve-panel.open{display:block}
+.cve-head{padding:10px 14px;background:rgba(0,0,0,.3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.65rem;color:var(--n);letter-spacing:1px;display:flex;justify-content:space-between}
+.cve-list{max-height:280px;overflow-y:auto}
+.cve-list::-webkit-scrollbar{width:3px}.cve-list::-webkit-scrollbar-thumb{background:var(--red)}
+.cve-item{padding:10px 14px;border-bottom:1px solid var(--border);transition:background .2s;cursor:default}
+.cve-item:hover{background:rgba(255,45,85,.05)}
+.cve-id{font-family:var(--mono);font-size:.65rem;color:var(--red);letter-spacing:1px;display:block;margin-bottom:3px}
+.cve-summary{font-size:.76rem;color:var(--dim);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cve-score{font-family:var(--mono);font-size:.6rem;margin-top:4px;display:flex;gap:8px}
+.score-high{color:var(--red)}.score-med{color:var(--gold)}.score-low{color:var(--n)}
+
+/* QR MODAL */
+#qr-modal{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center}
+#qr-modal.open{display:flex}
+.qr-box{background:var(--card);border:1px solid var(--n);padding:32px;text-align:center;max-width:300px}
+.qr-title{font-family:var(--orb);font-size:.85rem;color:var(--white);margin-bottom:20px;letter-spacing:1px}
+#qr-canvas{margin:0 auto 16px;display:block;filter:invert(0)}
+[data-theme=light] #qr-canvas{filter:invert(1)}
+.qr-name{font-family:var(--mono);font-size:.72rem;color:var(--n);letter-spacing:1px;margin-bottom:6px}
+.qr-close{margin-top:16px;padding:8px 24px;background:transparent;border:1px solid var(--dim);color:var(--dim);font-family:var(--mono);font-size:.7rem;cursor:pointer;transition:var(--tr)}
+.qr-close:hover{border-color:var(--red);color:var(--red)}
+
+/* EASTER EGG */
+#easter{position:fixed;inset:0;z-index:99990;background:#000;display:none;align-items:center;justify-content:center;flex-direction:column;font-family:var(--mono)}
+#easter.show{display:flex}
+.ee-title{font-family:var(--orb);font-size:2rem;color:var(--n);text-shadow:var(--glow);margin-bottom:20px;animation:glow-pulse 1.5s infinite}
+.ee-msg{font-size:.85rem;color:var(--dim);text-align:center;max-width:400px;line-height:1.8;margin-bottom:30px}
+.ee-code{font-size:1.2rem;letter-spacing:8px;color:var(--n2);margin-bottom:30px}
+.ee-close{padding:10px 28px;border:1px solid var(--n);color:var(--n);background:transparent;font-family:var(--mono);font-size:.75rem;cursor:pointer;letter-spacing:2px;transition:var(--tr)}
+.ee-close:hover{background:rgba(0,255,157,.1)}
+
+/* VISITOR */
+.vis-count{color:var(--n);font-weight:700}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(25px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1)}
+.rev.visible{opacity:1;transform:translateY(0)}
+.rev.d1{transition-delay:.1s}.rev.d2{transition-delay:.2s}.rev.d3{transition-delay:.3s}
+
+/* KEYFRAMES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes scanh{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes glitch{0%,85%,100%{clip-path:inset(0 0 100% 0);transform:translateX(0)}87%{clip-path:inset(20% 0 60% 0);transform:translateX(-4px)}89%{clip-path:inset(50% 0 30% 0);transform:translateX(4px)}91%{clip-path:inset(80% 0 5% 0);transform:translateX(-2px)}93%{clip-path:inset(0% 0 85% 0);transform:translateX(2px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slideIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.h-stats{display:none}}
+@media(max-width:900px){
+  .nav-links{display:none}.ham{display:flex}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .skills-grid,.hof-grid,.test-grid,.blog-grid{grid-template-columns:repeat(2,1fr)}
+  .certs-grid,.tools-grid,.gh-grid{grid-template-columns:repeat(2,1fr)}
+  .svc-grid,.proj-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  section{padding:70px 5%}
+  nav{padding:0 4%}
+  .h-btns{flex-direction:column}
+  .skills-grid,.hof-grid,.test-grid,.blog-grid,.certs-grid,.tools-grid,.svc-grid,.gh-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .h-name{font-size:2rem}
+  #cvefeed{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- PAGE TRANSITION -->
+<div id="pt"><div class="pt-col"></div><div class="pt-col"></div><div class="pt-col"></div><div class="pt-col"></div><div class="pt-col"></div></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">CYBER<span>SEC</span>.IO</div>
+  <div class="ld-box">
+    <div class="ld-bar-top">
+      <div class="ld-dot r"></div><div class="ld-dot y"></div><div class="ld-dot g"></div>
+      <span class="ld-title">INITIALIZING PORTFOLIO...</span>
+    </div>
+    <div class="ld-body" id="ld-body"></div>
+    <div class="ld-progress"><div class="ld-bar" id="ld-bar"></div></div>
+    <div class="ld-pct" id="ld-pct">0%</div>
+  </div>
+</div>
+
+<!-- GOOGLE TRANSLATE -->
+<div id="google_translate_element"></div>
+
+<!-- NETWORK CANVAS -->
+<canvas id="net-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CYBER<span>SEC</span>.IO</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-wrap" id="langWrap">
+      <button class="lang-btn" onclick="toggleLangDrop()">
+        <span id="lf">🇺🇸</span><span id="ll">EN</span><span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-drop" id="langDrop">
+        <input class="lang-search" type="text" placeholder="🔍 Search language..." id="langSearch" oninput="filterLangs(this.value)">
+        <div class="lang-list" id="langList"></div>
+      </div>
+    </div>
+    <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    <button class="icon-btn" onclick="openQR()">📱</button>
+    <div class="ham" id="ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="m-nav" id="mNav">
+  <a href="#about" onclick="toggleMobile()">About</a>
+  <a href="#skills" onclick="toggleMobile()">Skills</a>
+  <a href="#projects" onclick="toggleMobile()">Projects</a>
+  <a href="#services" onclick="toggleMobile()">Services</a>
+  <a href="#blog" onclick="toggleMobile()">Blog</a>
+  <a href="#contact" onclick="toggleMobile()">Contact</a>
+</div>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <span><span class="s-dot"></span> SYSTEM: ONLINE</span>
+  <span>THREAT LEVEL: LOW</span>
+  <span>VISITORS: <span class="vis-count" id="visCount">...</span></span>
+  <span id="clockBar">──</span>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="grid-deco"></div>
+  <div class="hero-content">
+    <div class="h-tag">CYBERSECURITY EXPERT</div>
+    <h1 class="h-name"><span class="glitch acc" data-text="YOUR">YOUR</span><br>NAME</h1>
+    <div class="h-role"><span id="typedRole"></span><span class="cursor"></span></div>
+    <p class="h-desc">Penetration tester, security researcher, and digital defender — protecting systems, networks, and data from evolving cyber threats. Available for freelance engagements worldwide.</p>
+    <div class="h-btns">
+      <a href="#projects" class="btn btn-p">VIEW WORK</a>
+      <a href="#contact" class="btn btn-s">HIRE ME</a>
+      <button class="btn btn-r" onclick="downloadResume()">⬇ RESUME</button>
+    </div>
+  </div>
+  <div class="h-stats">
+    <div class="stat-box"><span class="stat-n" data-count="50">0</span><span class="stat-l">Projects Done</span></div>
+    <div class="stat-box"><span class="stat-n" data-count="30">0</span><span class="stat-l">Clients Served</span></div>
+    <div class="stat-box"><span class="stat-n" data-count="5">0</span><span class="stat-l">Years Exp.</span></div>
+    <div class="stat-box"><span class="stat-n" data-count="12">0</span><span class="stat-l">Certs Earned</span></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="s-head rev"><span class="s-num">01 //</span><h2 class="s-title">ABOUT ME</h2><div class="s-line"></div></div>
+  <div class="about-grid">
+    <div class="term rev d1">
+      <div class="term-bar"><div class="tdot r"></div><div class="tdot y"></div><div class="tdot g"></div><span class="term-title">~/profile.json</span></div>
+      <div class="term-body">
+        <span><span class="tp">➜ </span><span class="tc">cat about.json</span></span>
+        <span class="to">{</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"name"</span>: <span class="tv">"Your Name"</span>,</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"role"</span>: <span class="tv">"Security Analyst"</span>,</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"location"</span>: <span class="tv">"Dhaka, Bangladesh"</span>,</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"exp"</span>: <span class="tv">"5+ years"</span>,</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"certs"</span>: [<span class="tv">"CEH","OSCP","CompTIA"</span>],</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"freelance"</span>: <span class="tv">true</span>,</span>
+        <span class="to">&nbsp;&nbsp;<span class="tk">"available"</span>: <span class="tv">true</span></span>
+        <span class="to">}</span>
+      </div>
+    </div>
+    <div class="rev d2">
+      <p class="about-p">I am a professional cybersecurity expert specializing in network security, penetration testing, and vulnerability assessment with 5+ years of hands-on experience.</p>
+      <p class="about-p">From corporate security engagements to individual freelance clients — I protect digital assets globally. Certified ethical hacker with a track record in bug bounty programs and responsible disclosure.</p>
+      <p class="about-p">Currently open for freelance work, security audits, and long-term consulting contracts worldwide.</p>
+      <div class="tags">
+        <span class="tag">Penetration Testing</span><span class="tag">VAPT</span><span class="tag">Malware Analysis</span>
+        <span class="tag">CTF Player</span><span class="tag">Bug Bounty</span><span class="tag">SOC Analyst</span>
+        <span class="tag">Red Team</span><span class="tag">Threat Intel</span><span class="tag">Reverse Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="s-head rev"><span class="s-num">02 //</span><h2 class="s-title">SKILLS & TOOLS</h2><div class="s-line"></div></div>
+  <div class="skills-grid">
+    <div class="sk-card rev"><span class="sk-ico">🔐</span><div class="sk-name">PENETRATION TESTING</div><div class="sk-bw"><div class="sk-b" data-w="95%"></div></div><div class="sk-pills"><span class="sk-pill">Metasploit</span><span class="sk-pill">Burp Suite</span><span class="sk-pill">Nmap</span><span class="sk-pill">Kali Linux</span></div></div>
+    <div class="sk-card rev d1"><span class="sk-ico">🌐</span><div class="sk-name">NETWORK SECURITY</div><div class="sk-bw"><div class="sk-b" data-w="90%"></div></div><div class="sk-pills"><span class="sk-pill">Wireshark</span><span class="sk-pill">Snort IDS</span><span class="sk-pill">pfSense</span><span class="sk-pill">Cisco</span></div></div>
+    <div class="sk-card rev d2"><span class="sk-ico">🕵️</span><div class="sk-name">MALWARE ANALYSIS</div><div class="sk-bw"><div class="sk-b" data-w="85%"></div></div><div class="sk-pills"><span class="sk-pill">IDA Pro</span><span class="sk-pill">Ghidra</span><span class="sk-pill">Cuckoo</span><span class="sk-pill">YARA</span></div></div>
+    <div class="sk-card rev"><span class="sk-ico">🛡️</span><div class="sk-name">SOC & THREAT INTEL</div><div class="sk-bw"><div class="sk-b" data-w="88%"></div></div><div class="sk-pills"><span class="sk-pill">Splunk</span><span class="sk-pill">MISP</span><span class="sk-pill">ELK Stack</span><span class="sk-pill">OpenCTI</span></div></div>
+    <div class="sk-card rev d1"><span class="sk-ico">💻</span><div class="sk-name">PROGRAMMING</div><div class="sk-bw"><div class="sk-b" data-w="82%"></div></div><div class="sk-pills"><span class="sk-pill">Python</span><span class="sk-pill">Bash</span><span class="sk-pill">PowerShell</span><span class="sk-pill">C/C++</span></div></div>
+    <div class="sk-card rev d2"><span class="sk-ico">☁️</span><div class="sk-name">CLOUD SECURITY</div><div class="sk-bw"><div class="sk-b" data-w="78%"></div></div><div class="sk-pills"><span class="sk-pill">AWS IAM</span><span class="sk-pill">Azure Defender</span><span class="sk-pill">Docker Sec</span><span class="sk-pill">Terraform</span></div></div>
+  </div>
+</section>
+
+<!-- ===== SKILL TREE ===== -->
+<section id="skilltree">
+  <div class="s-head rev"><span class="s-num">03 //</span><h2 class="s-title">SKILL TREE</h2><div class="s-line"></div></div>
+  <div class="tree-wrap rev">
+    <svg id="skill-tree-svg" width="800" height="420" viewBox="0 0 800 420"></svg>
+  </div>
+</section>
+
+<!-- ===== CERTS ===== -->
+<section id="certs">
+  <div class="s-head rev"><span class="s-num">04 //</span><h2 class="s-title">CERTIFICATIONS</h2><div class="s-line"></div></div>
+  <div class="certs-grid">
+    <div class="cert-card rev"><span class="cert-ico">🏆</span><div class="cert-name">CEH</div><div class="cert-org">EC-Council</div><div class="cert-year">2022</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev d1"><span class="cert-ico">🔴</span><div class="cert-name">OSCP</div><div class="cert-org">Offensive Security</div><div class="cert-year">2023</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev d2"><span class="cert-ico">🛡️</span><div class="cert-name">CompTIA Security+</div><div class="cert-org">CompTIA</div><div class="cert-year">2021</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev d3"><span class="cert-ico">☁️</span><div class="cert-name">AWS Security</div><div class="cert-org">Amazon Web Services</div><div class="cert-year">2023</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev"><span class="cert-ico">🔐</span><div class="cert-name">CISSP</div><div class="cert-org">ISC²</div><div class="cert-year">2024</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev d1"><span class="cert-ico">🌐</span><div class="cert-name">eWPT</div><div class="cert-org">INE Security</div><div class="cert-year">2023</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev d2"><span class="cert-ico">🐧</span><div class="cert-name">LPIC-1</div><div class="cert-org">Linux Professional</div><div class="cert-year">2021</div><div class="cert-badge">✓</div></div>
+    <div class="cert-card rev d3"><span class="cert-ico">🔍</span><div class="cert-name">GCIH</div><div class="cert-org">GIAC</div><div class="cert-year">2024</div><div class="cert-badge">✓</div></div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section id="timeline">
+  <div class="s-head rev"><span class="s-num">05 //</span><h2 class="s-title">CAREER TIMELINE</h2><div class="s-line"></div></div>
+  <div class="tl">
+    <div class="tl-item rev"><div class="tl-dot"></div><div class="tl-year">2024 — PRESENT</div><div class="tl-role">Senior Security Analyst</div><div class="tl-company">TechCorp Ltd. · Full-time</div><div class="tl-desc">Leading red team operations, conducting enterprise-level VAPT, mentoring junior analysts and building internal security tooling.</div></div>
+    <div class="tl-item rev d1"><div class="tl-dot n2"></div><div class="tl-year">2022 — 2024</div><div class="tl-role">Penetration Tester</div><div class="tl-company">SecureNet BD · Full-time</div><div class="tl-desc">Performed web application & network penetration tests for 30+ clients. Discovered 150+ critical vulnerabilities across engagements.</div></div>
+    <div class="tl-item rev d2"><div class="tl-dot"></div><div class="tl-year">2020 — PRESENT</div><div class="tl-role">Freelance Security Consultant</div><div class="tl-company">Independent · Upwork / Direct</div><div class="tl-desc">International freelance engagements — VAPT, security audits, code review, and security awareness training for 50+ clients globally.</div></div>
+    <div class="tl-item rev d3"><div class="tl-dot n2"></div><div class="tl-year">2019 — 2022</div><div class="tl-role">SOC Analyst (Tier 2)</div><div class="tl-company">DataShield Inc. · Full-time</div><div class="tl-desc">Monitored SIEM alerts, performed incident response, threat hunting, and developed detection rules for APT campaigns.</div></div>
+    <div class="tl-item rev"><div class="tl-dot"></div><div class="tl-year">2018</div><div class="tl-role">B.Sc. Computer Science</div><div class="tl-company">University of Dhaka</div><div class="tl-desc">Graduated with honors. Final year thesis on "Zero-Day Exploit Detection Using ML-Based Anomaly Detection."</div></div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="s-head rev"><span class="s-num">06 //</span><h2 class="s-title">PROJECTS</h2><div class="s-line"></div></div>
+  <div class="proj-grid">
+    <div class="proj-card rev"><div class="proj-head"><span class="proj-type">WEB PENTEST</span><span class="proj-status"><div class="pdot"></div>&nbsp;LIVE</span></div><div class="proj-body"><div class="proj-title">E-COMMERCE VAPT</div><p class="proj-desc">Full vulnerability assessment on a large e-commerce platform. SQL Injection, XSS, IDOR, and CSRF vulnerabilities identified and reported with remediation plan.</p><div class="tech-tags"><span class="t-tag">Burp Suite</span><span class="t-tag">OWASP Top 10</span><span class="t-tag">SQLMap</span><span class="t-tag">FFUF</span></div></div><div class="proj-ov"><div class="proj-links"><a href="#" class="plink p">DETAILS</a><a href="#" class="plink s">REPORT</a></div></div></div>
+    <div class="proj-card rev d1"><div class="proj-head"><span class="proj-type">NETWORK SEC</span><span class="proj-status">COMPLETED</span></div><div class="proj-body"><div class="proj-title">CORPORATE NETWORK AUDIT</div><p class="proj-desc">Full security audit of a mid-sized company's network infrastructure. Discovered misconfigured firewalls, exposed RDP, and lateral movement paths.</p><div class="tech-tags"><span class="t-tag">Nmap</span><span class="t-tag">Nessus</span><span class="t-tag">Wireshark</span><span class="t-tag">BloodHound</span></div></div><div class="proj-ov"><div class="proj-links"><a href="#" class="plink p">DETAILS</a><a href="#" class="plink s">CASE STUDY</a></div></div></div>
+    <div class="proj-card rev"><div class="proj-head"><span class="proj-type">TOOL DEV</span><span class="proj-status"><div class="pdot"></div>&nbsp;OPEN SOURCE</span></div><div class="proj-body"><div class="proj-title">RECON AUTOMATION TOOL</div><p class="proj-desc">Custom Python framework for automated reconnaissance — subdomain enumeration, port scanning, vulnerability fingerprinting, and report generation.</p><div class="tech-tags"><span class="t-tag">Python</span><span class="t-tag">Shodan API</span><span class="t-tag">GitHub</span><span class="t-tag">★ 340</span></div></div><div class="proj-ov"><div class="proj-links"><a href="#" class="plink p">GITHUB</a><a href="#" class="plink s">DEMO</a></div></div></div>
+    <div class="proj-card rev d1"><div class="proj-head"><span class="proj-type">BUG BOUNTY</span><span class="proj-status">HALL OF FAME</span></div><div class="proj-body"><div class="proj-title">CRITICAL CVE DISCOVERY</div><p class="proj-desc">Discovered Critical SSRF + RCE chain in a SaaS platform affecting 2M+ users. Responsible disclosure led to $4,500 bounty reward and Hall of Fame listing.</p><div class="tech-tags"><span class="t-tag">SSRF</span><span class="t-tag">RCE</span><span class="t-tag">HackerOne</span><span class="t-tag">$4,500</span></div></div><div class="proj-ov"><div class="proj-links"><a href="#" class="plink p">WRITEUP</a><a href="#" class="plink s">CERT</a></div></div></div>
+  </div>
+</section>
+
+<!-- ===== HALL OF FAME ===== -->
+<section id="hof">
+  <div class="s-head rev"><span class="s-num">07 //</span><h2 class="s-title">HALL OF FAME</h2><div class="s-line"></div></div>
+  <div class="hof-grid">
+    <div class="hof-card rev"><span class="hof-rank">#01</span><div class="hof-title">CRITICAL SSRF + RCE CHAIN</div><div class="hof-platform">HackerOne · Platform X</div><p class="hof-desc">Chained SSRF with internal metadata access leading to Remote Code Execution on production servers. Affected 2M+ users.</p><div class="hof-reward">💰 $4,500 Bounty · CVE-2023-XXXXX</div></div>
+    <div class="hof-card rev d1"><span class="hof-rank">#02</span><div class="hof-title">AUTH BYPASS IN ADMIN PANEL</div><div class="hof-platform">Bugcrowd · FinTech App</div><p class="hof-desc">Discovered JWT algorithm confusion attack allowing complete admin account takeover without credentials.</p><div class="hof-reward">💰 $2,000 Bounty · Hall of Fame</div></div>
+    <div class="hof-card rev d2"><span class="hof-rank">#03</span><div class="hof-title">SQLI TO FULL DB DUMP</div><div class="hof-platform">Self-managed · E-commerce</div><p class="hof-desc">Time-based blind SQL injection in search endpoint exposed entire customer database including PII of 500K+ users.</p><div class="hof-reward">💰 $1,200 Bounty · Acknowledged</div></div>
+  </div>
+</section>
+
+<!-- ===== TOOLS ===== -->
+<section id="tools">
+  <div class="s-head rev"><span class="s-num">08 //</span><h2 class="s-title">TOOLS & SETUP</h2><div class="s-line"></div></div>
+  <div class="tools-grid">
+    <div class="tool-item rev"><span class="tool-ico">🐉</span><div><span class="tool-name">Kali Linux</span><span class="tool-cat">OS / Pentest Distro</span></div></div>
+    <div class="tool-item rev d1"><span class="tool-ico">🔵</span><div><span class="tool-name">Burp Suite Pro</span><span class="tool-cat">Web App Testing</span></div></div>
+    <div class="tool-item rev d2"><span class="tool-ico">💥</span><div><span class="tool-name">Metasploit</span><span class="tool-cat">Exploitation Framework</span></div></div>
+    <div class="tool-item rev d3"><span class="tool-ico">🗺️</span><div><span class="tool-name">Nmap / Masscan</span><span class="tool-cat">Network Scanner</span></div></div>
+    <div class="tool-item rev"><span class="tool-ico">🦈</span><div><span class="tool-name">Wireshark</span><span class="tool-cat">Packet Analyzer</span></div></div>
+    <div class="tool-item rev d1"><span class="tool-ico">👁️</span><div><span class="tool-name">IDA Pro / Ghidra</span><span class="tool-cat">Reverse Engineering</span></div></div>
+    <div class="tool-item rev d2"><span class="tool-ico">📊</span><div><span class="tool-name">Splunk / ELK</span><span class="tool-cat">SIEM / Log Analysis</span></div></div>
+    <div class="tool-item rev d3"><span class="tool-ico">🕷️</span><div><span class="tool-name">Cobalt Strike</span><span class="tool-cat">Red Team C2</span></div></div>
+    <div class="tool-item rev"><span class="tool-ico">🔬</span><div><span class="tool-name">Nessus / OpenVAS</span><span class="tool-cat">Vulnerability Scanner</span></div></div>
+    <div class="tool-item rev d1"><span class="tool-ico">🐙</span><div><span class="tool-name">Git / GitHub</span><span class="tool-cat">Version Control</span></div></div>
+    <div class="tool-item rev d2"><span class="tool-ico">🐍</span><div><span class="tool-name">Python / Bash</span><span class="tool-cat">Scripting / Automation</span></div></div>
+    <div class="tool-item rev d3"><span class="tool-ico">🎯</span><div><span class="tool-name">BloodHound / AD</span><span class="tool-cat">AD Enumeration</span></div></div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="s-head rev"><span class="s-num">09 //</span><h2 class="s-title">SERVICES & PRICING</h2><div class="s-line"></div></div>
+  <div class="svc-grid">
+    <div class="svc-card rev"><span class="svc-ico">🔍</span><div class="svc-name">BASIC AUDIT</div><div class="svc-price">$299<span> / project</span></div><ul class="svc-feats"><li>Web App Vulnerability Scan</li><li>OWASP Top 10 Check</li><li>Basic Report (PDF)</li><li>1 Week Delivery</li><li>Email Support</li></ul><a href="#contact" class="btn btn-s" style="display:block;text-align:center">GET STARTED</a></div>
+    <div class="svc-card featured rev d1"><span class="svc-ico">⚔️</span><div class="svc-name">FULL PENTEST</div><div class="svc-price">$999<span> / project</span></div><ul class="svc-feats"><li>Full VAPT Assessment</li><li>Network + Web + API</li><li>Detailed Report + PoC</li><li>Remediation Guidance</li><li>Re-test Included</li><li>Priority Support</li></ul><a href="#contact" class="btn btn-p" style="display:block;text-align:center">GET STARTED</a></div>
+    <div class="svc-card rev d2"><span class="svc-ico">🏢</span><div class="svc-name">ENTERPRISE</div><div class="svc-price">Custom<span> / month</span></div><ul class="svc-feats"><li>Continuous Security Monitoring</li><li>Red Team Operations</li><li>SOC Setup & Management</li><li>Employee Training</li><li>24/7 Support</li><li>Dedicated Account Manager</li></ul><a href="#contact" class="btn btn-s" style="display:block;text-align:center">CONTACT US</a></div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="s-head rev"><span class="s-num">10 //</span><h2 class="s-title">CLIENT REVIEWS</h2><div class="s-line"></div></div>
+  <div class="test-grid">
+    <div class="test-card rev"><div class="stars">★★★★★</div><p class="test-text">Found 3 critical vulnerabilities in our payment system that our previous auditor missed. Incredibly thorough and professional. Highly recommended!</p><div class="test-author"><div class="test-avatar">JD</div><div><span class="test-name">John Davidson</span><span class="test-role">CTO · FinTech Startup</span></div></div></div>
+    <div class="test-card rev d1"><div class="stars">★★★★★</div><p class="test-text">Exceptional work on our network audit. The detailed report with PoC exploits helped our dev team understand and fix issues quickly. Will hire again.</p><div class="test-author"><div class="test-avatar">SM</div><div><span class="test-name">Sarah Mitchell</span><span class="test-role">IT Director · Healthcare Corp</span></div></div></div>
+    <div class="test-card rev d2"><div class="stars">★★★★★</div><p class="test-text">Best security consultant I've worked with on Upwork. Delivered beyond scope, found SQL injection that could have cost us millions. 5 stars!</p><div class="test-author"><div class="test-avatar">RA</div><div><span class="test-name">Rahul Anand</span><span class="test-role">Founder · E-commerce Platform</span></div></div></div>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section id="blog">
+  <div class="s-head rev"><span class="s-num">11 //</span><h2 class="s-title">BLOG & WRITEUPS</h2><div class="s-line"></div></div>
+  <div class="blog-grid">
+    <div class="blog-card rev"><div class="blog-cat"><span>BUG BOUNTY</span><span class="blog-date">Dec 2024</span></div><div class="blog-body"><div class="blog-title">How I Chained SSRF + RCE to Earn $4,500 on HackerOne</div><p class="blog-excerpt">A detailed walkthrough of how I discovered and chained two vulnerabilities to achieve remote code execution on a production server...</p><a href="#" class="blog-read">READ MORE →</a></div></div>
+    <div class="blog-card rev d1"><div class="blog-cat"><span>CTF WRITEUP</span><span class="blog-date">Nov 2024</span></div><div class="blog-body"><div class="blog-title">HackTheBox — Defeating "Cyber Apocalypse 2024" Web Challenges</div><p class="blog-excerpt">Complete writeup for all web challenges in HackTheBox Cyber Apocalypse 2024 CTF competition including bypasses and exploits...</p><a href="#" class="blog-read">READ MORE →</a></div></div>
+    <div class="blog-card rev d2"><div class="blog-cat"><span>TUTORIAL</span><span class="blog-date">Oct 2024</span></div><div class="blog-body"><div class="blog-title">Building a Custom Recon Tool in Python — Full Guide</div><p class="blog-excerpt">Step-by-step guide to building an automated reconnaissance tool using Python, integrating Shodan API, and generating reports...</p><a href="#" class="blog-read">READ MORE →</a></div></div>
+  </div>
+</section>
+
+<!-- ===== INTERACTIVE TERMINAL ===== -->
+<section id="terminal-sec">
+  <div class="s-head rev"><span class="s-num">12 //</span><h2 class="s-title">INTERACTIVE TERMINAL</h2><div class="s-line"></div></div>
+  <div class="iterm rev">
+    <div class="iterm-bar">
+      <div class="tdot r"></div><div class="tdot y"></div><div class="tdot g"></div>
+      <span class="iterm-title">guest@cybersec.io:~$</span>
+      <span class="iterm-hint">Try: help, whoami, skills, contact, projects</span>
+    </div>
+    <div class="iterm-output" id="itermOut"></div>
+    <div class="iterm-input-row">
+      <span class="iterm-prompt">guest@cybersec:~$</span>
+      <input class="iterm-input" id="itermIn" type="text" placeholder="Type a command..." autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTF CHALLENGE ===== -->
+<section id="ctf">
+  <div class="s-head rev"><span class="s-num">13 //</span><h2 class="s-title">CTF CHALLENGE</h2><div class="s-line"></div></div>
+  <div class="ctf-box rev">
+    <div class="ctf-head"><span class="ctf-title">⚑ FLAG CHALLENGE — Can you find the flag?</span><span class="ctf-pts">100 POINTS</span></div>
+    <div class="ctf-body">
+      <div class="ctf-challenge" id="ctfChallenge">Decode this to find the flag:<br><br>Q1RGe0gzNjdfSDRDS0VSX0VYUEVSVH0=<br><br>Hint: Look at the encoding, not the encryption.</div>
+      <p class="ctf-hint">🧩 <strong>Challenge:</strong> The flag is hidden in the string above. Use your knowledge of encoding schemes to decode it. Submit the flag in the format: <code style="color:var(--n)">CTF{...}</code></p>
+      <div class="ctf-input-row">
+        <input class="ctf-input" id="ctfInput" type="text" placeholder="Submit your flag: CTF{...}">
+        <button class="ctf-submit" onclick="checkCTF()">SUBMIT</button>
+      </div>
+      <div class="ctf-result" id="ctfResult"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HACK ME ===== -->
+<section id="hackme">
+  <div class="s-head rev"><span class="s-num">14 //</span><h2 class="s-title">HACK ME IF YOU CAN</h2><div class="s-line"></div></div>
+  <div class="hackme-inner">
+    <p>Think you have what it takes? I've intentionally left some challenges hidden on this site. Find them, document your approach, and reach out — the best researchers get a shoutout on my Hall of Fame!</p>
+    <div class="hm-stats">
+      <div class="hm-stat"><span class="hm-n" id="hmAttempts">0</span><span class="hm-l">Attempts</span></div>
+      <div class="hm-stat"><span class="hm-n">3</span><span class="hm-l">Hidden Flags</span></div>
+      <div class="hm-stat"><span class="hm-n">$50</span><span class="hm-l">Max Reward</span></div>
+    </div>
+    <div class="rules">
+      <div class="rules-title">// RULES OF ENGAGEMENT</div>
+      <ul>
+        <li>No actual attacks against real infrastructure</li>
+        <li>Only client-side challenges on this portfolio</li>
+        <li>Responsible disclosure — contact me first</li>
+        <li>No automated scanners — manual only</li>
+        <li>Document your methodology step by step</li>
+      </ul>
+    </div>
+    <a href="#contact" class="btn btn-p">SUBMIT FINDINGS</a>
+  </div>
+</section>
+
+<!-- ===== GITHUB STATS ===== -->
+<section id="ghstats">
+  <div class="s-head rev"><span class="s-num">15 //</span><h2 class="s-title">GITHUB STATS</h2><div class="s-line"></div></div>
+  <div class="gh-user rev" id="ghUser">📡 Loading GitHub data...</div>
+  <div class="gh-grid rev">
+    <div class="gh-card"><span class="gh-n" id="ghRepos">--</span><span class="gh-l">Repositories</span></div>
+    <div class="gh-card"><span class="gh-n" id="ghFollowers">--</span><span class="gh-l">Followers</span></div>
+    <div class="gh-card"><span class="gh-n" id="ghStars">--</span><span class="gh-l">Total Stars</span></div>
+    <div class="gh-card"><span class="gh-n" id="ghGists">--</span><span class="gh-l">Gists</span></div>
+  </div>
+  <div class="gh-repos rev d1" id="ghRepoList"></div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="s-head rev"><span class="s-num">16 //</span><h2 class="s-title">CONTACT</h2><div class="s-line"></div></div>
+  <div class="contact-grid">
+    <div class="c-info rev">
+      <h3>LET'S WORK TOGETHER</h3>
+      <p>For security audits, penetration testing, or any cybersecurity project — get in touch. Available for freelance, contracts, and long-term consulting worldwide.</p>
+      <div class="c-items">
+        <div class="c-item"><div class="c-ico">📧</div><div><span class="c-label">Email</span><span class="c-val">your.email@domain.com</span></div></div>
+        <div class="c-item"><div class="c-ico">💼</div><div><span class="c-label">LinkedIn</span><span class="c-val">linkedin.com/in/yourname</span></div></div>
+        <div class="c-item"><div class="c-ico">🐙</div><div><span class="c-label">GitHub</span><span class="c-val">github.com/yourname</span></div></div>
+        <div class="c-item"><div class="c-ico">🐦</div><div><span class="c-label">Twitter/X</span><span class="c-val">@yourhandle</span></div></div>
+      </div>
+      <div class="c-actions">
+        <button class="btn btn-s" onclick="downloadResume()">⬇ DOWNLOAD CV</button>
+        <button class="btn btn-r" onclick="requestNDA()">🔒 REQUEST NDA</button>
+      </div>
+    </div>
+    <div class="rev d1">
+      <div class="c-form">
+        <div class="f-row">
+          <div><label class="f-label">// YOUR NAME</label><input type="text" class="f-input" placeholder="John Doe"></div>
+          <div><label class="f-label">// EMAIL</label><input type="email" class="f-input" placeholder="you@company.com"></div>
+        </div>
+        <div><label class="f-label">// SERVICE NEEDED</label>
+          <select class="f-select">
+            <option value="">Select service...</option>
+            <option>Web Application Pentest</option>
+            <option>Network Security Audit</option>
+            <option>Bug Bounty Consultation</option>
+            <option>Malware Analysis</option>
+            <option>SOC Setup</option>
+            <option>Security Training</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div><label class="f-label">// BUDGET RANGE</label>
+          <select class="f-select">
+            <option value="">Select budget...</option>
+            <option>$100 - $500</option>
+            <option>$500 - $1,000</option>
+            <option>$1,000 - $5,000</option>
+            <option>$5,000+</option>
+            <option>Let's discuss</option>
+          </select>
+        </div>
+        <div><label class="f-label">// MESSAGE</label><textarea class="f-textarea" placeholder="Describe your project, scope, and timeline..."></textarea></div>
+        <button class="btn btn-p" id="sendBtn" onclick="sendMessage()" style="clip-path:polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%)">SEND MESSAGE</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">CYBERSEC.IO</div>
+  <div class="f-copy">© 2025 YOUR NAME — ALL SYSTEMS SECURED</div>
+  <div class="f-links">
+    <a href="#hero">TOP</a>
+    <a href="#projects">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- ===== AI CHATBOT ===== -->
+<div id="chatbot">
+  <div class="chat-window" id="chatWin">
+    <div class="chat-head">
+      <div class="chat-avatar">🤖</div>
+      <div><div class="chat-name">SEC-BOT</div><div class="chat-status"><span class="s-dot"></span> Online</div></div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMsgs"></div>
+    <div class="chat-quick" id="chatQuick"></div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatIn" type="text" placeholder="Ask me anything..." autocomplete="off">
+      <button class="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <button class="chat-toggle" onclick="toggleChat()">🛡️<span class="chat-badge">1</span></button>
+</div>
+
+<!-- ===== CVE FEED ===== -->
+<div id="cvefeed">
+  <div class="cve-panel" id="cvePanel">
+    <div class="cve-head"><span>🔴 LIVE CVE FEED</span><span id="cveTime">Loading...</span></div>
+    <div class="cve-list" id="cveList"><div style="padding:14px;font-family:var(--mono);font-size:.72rem;color:var(--dim)">Fetching CVEs...</div></div>
+  </div>
+  <button class="cve-toggle" onclick="toggleCVE()"><span class="s-dot"></span> CVE FEED</button>
+</div>
+
+<!-- ===== QR MODAL ===== -->
+<div id="qr-modal" onclick="if(event.target===this)closeQR()">
+  <div class="qr-box">
+    <div class="qr-title">📱 BUSINESS CARD QR</div>
+    <canvas id="qr-canvas" width="160" height="160"></canvas>
+    <div class="qr-name">your.email@domain.com</div>
+    <p style="font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-top:6px">Scan to get contact info</p>
+    <button class="qr-close" onclick="closeQR()">CLOSE</button>
+  </div>
+</div>
+
+<!-- ===== EASTER EGG ===== -->
+<div id="easter">
+  <div class="ee-title">🎉 ACHIEVEMENT UNLOCKED!</div>
+  <div class="ee-code">↑↑↓↓←→←→BA</div>
+  <div class="ee-msg">You found the Konami Code easter egg! You clearly know your way around a keyboard. Maybe you should apply for a job? 😄<br><br>Secret message: <span style="color:var(--n);font-family:var(--mono)">FLAG{K0N4M1_C0D3_M4ST3R}</span></div>
+  <button class="ee-close" onclick="closeEaster()">CLOSE [ ESC ]</button>
+</div>
+
+<!-- GOOGLE TRANSLATE SCRIPT -->
+<script type="text/javascript">
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element');
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+// ==============================
+// LANGUAGE DATA (150+ languages)
+// ==============================
+const LANGS = [
+  // Popular
+  {code:'en',name:'English',native:'English',flag:'🇺🇸',region:'Popular'},
+  {code:'bn',name:'Bengali',native:'বাংলা',flag:'🇧🇩',region:'Popular'},
+  {code:'ar',name:'Arabic',native:'العربية',flag:'🇸🇦',region:'Popular'},
+  {code:'zh-CN',name:'Chinese (Simplified)',native:'中文(简体)',flag:'🇨🇳',region:'Popular'},
+  {code:'es',name:'Spanish',native:'Español',flag:'🇪🇸',region:'Popular'},
+  {code:'fr',name:'French',native:'Français',flag:'🇫🇷',region:'Popular'},
+  {code:'de',name:'German',native:'Deutsch',flag:'🇩🇪',region:'Popular'},
+  {code:'hi',name:'Hindi',native:'हिंदी',flag:'🇮🇳',region:'Popular'},
+  {code:'ja',name:'Japanese',native:'日本語',flag:'🇯🇵',region:'Popular'},
+  {code:'ko',name:'Korean',native:'한국어',flag:'🇰🇷',region:'Popular'},
+  {code:'pt',name:'Portuguese',native:'Português',flag:'🇧🇷',region:'Popular'},
+  {code:'ru',name:'Russian',native:'Русский',flag:'🇷🇺',region:'Popular'},
+  {code:'tr',name:'Turkish',native:'Türkçe',flag:'🇹🇷',region:'Popular'},
+  {code:'id',name:'Indonesian',native:'Bahasa Indonesia',flag:'🇮🇩',region:'Popular'},
+  {code:'ur',name:'Urdu',native:'اردو',flag:'🇵🇰',region:'Popular'},
+  // South Asia
+  {code:'gu',name:'Gujarati',native:'ગુજરાતી',flag:'🇮🇳',region:'South Asia'},
+  {code:'kn',name:'Kannada',native:'ಕನ್ನಡ',flag:'🇮🇳',region:'South Asia'},
+  {code:'ml',name:'Malayalam',native:'മലയാളം',flag:'🇮🇳',region:'South Asia'},
+  {code:'mr',name:'Marathi',native:'मराठी',flag:'🇮🇳',region:'South Asia'},
+  {code:'ne',name:'Nepali',native:'नेपाली',flag:'🇳🇵',region:'South Asia'},
+  {code:'pa',name:'Punjabi',native:'ਪੰਜਾਬੀ',flag:'🇮🇳',region:'South Asia'},
+  {code:'si',name:'Sinhala',native:'සිංහල',flag:'🇱🇰',region:'South Asia'},
+  {code:'ta',name:'Tamil',native:'தமிழ்',flag:'🇮🇳',region:'South Asia'},
+  {code:'te',name:'Telugu',native:'తెలుగు',flag:'🇮🇳',region:'South Asia'},
+  {code:'sd',name:'Sindhi',native:'سنڌي',flag:'🇵🇰',region:'South Asia'},
+  {code:'as',name:'Assamese',native:'অসমীয়া',flag:'🇮🇳',region:'South Asia'},
+  {code:'bho',name:'Bhojpuri',native:'भोजपुरी',flag:'🇮🇳',region:'South Asia'},
+  {code:'doi',name:'Dogri',native:'डोगरी',flag:'🇮🇳',region:'South Asia'},
+  {code:'mai',name:'Maithili',native:'मैथिली',flag:'🇮🇳',region:'South Asia'},
+  {code:'mni-Mtei',name:'Meitei (Manipuri)',native:'মৈতৈলোন্',flag:'🇮🇳',region:'South Asia'},
+  {code:'or',name:'Odia',native:'ଓଡ଼ିଆ',flag:'🇮🇳',region:'South Asia'},
+  {code:'sa',name:'Sanskrit',native:'संस्कृतम्',flag:'🇮🇳',region:'South Asia'},
+  {code:'gom',name:'Konkani',native:'कोंकणी',flag:'🇮🇳',region:'South Asia'},
+  // East/SE Asia
+  {code:'zh-TW',name:'Chinese (Traditional)',native:'中文(繁體)',flag:'🇹🇼',region:'East & SE Asia'},
+  {code:'ceb',name:'Cebuano',native:'Cebuano',flag:'🇵🇭',region:'East & SE Asia'},
+  {code:'tl',name:'Filipino',native:'Filipino',flag:'🇵🇭',region:'East & SE Asia'},
+  {code:'hmn',name:'Hmong',native:'Hmoob',flag:'🇱🇦',region:'East & SE Asia'},
+  {code:'jw',name:'Javanese',native:'Jawa',flag:'🇮🇩',region:'East & SE Asia'},
+  {code:'km',name:'Khmer',native:'ខ្មែរ',flag:'🇰🇭',region:'East & SE Asia'},
+  {code:'lo',name:'Lao',native:'ລາວ',flag:'🇱🇦',region:'East & SE Asia'},
+  {code:'ms',name:'Malay',native:'Bahasa Melayu',flag:'🇲🇾',region:'East & SE Asia'},
+  {code:'my',name:'Myanmar',native:'မြန်မာ',flag:'🇲🇲',region:'East & SE Asia'},
+  {code:'th',name:'Thai',native:'ไทย',flag:'🇹🇭',region:'East & SE Asia'},
+  {code:'vi',name:'Vietnamese',native:'Tiếng Việt',flag:'🇻🇳',region:'East & SE Asia'},
+  {code:'su',name:'Sundanese',native:'Basa Sunda',flag:'🇮🇩',region:'East & SE Asia'},
+  {code:'ilo',name:'Ilocano',native:'Ilokano',flag:'🇵🇭',region:'East & SE Asia'},
+  // Europe
+  {code:'af',name:'Afrikaans',native:'Afrikaans',flag:'🇿🇦',region:'Europe & Americas'},
+  {code:'sq',name:'Albanian',native:'Shqip',flag:'🇦🇱',region:'Europe & Americas'},
+  {code:'be',name:'Belarusian',native:'Беларуская',flag:'🇧🇾',region:'Europe & Americas'},
+  {code:'bs',name:'Bosnian',native:'Bosanski',flag:'🇧🇦',region:'Europe & Americas'},
+  {code:'bg',name:'Bulgarian',native:'Български',flag:'🇧🇬',region:'Europe & Americas'},
+  {code:'ca',name:'Catalan',native:'Català',flag:'🇪🇸',region:'Europe & Americas'},
+  {code:'hr',name:'Croatian',native:'Hrvatski',flag:'🇭🇷',region:'Europe & Americas'},
+  {code:'cs',name:'Czech',native:'Čeština',flag:'🇨🇿',region:'Europe & Americas'},
+  {code:'da',name:'Danish',native:'Dansk',flag:'🇩🇰',region:'Europe & Americas'},
+  {code:'nl',name:'Dutch',native:'Nederlands',flag:'🇳🇱',region:'Europe & Americas'},
+  {code:'eo',name:'Esperanto',native:'Esperanto',flag:'🌍',region:'Europe & Americas'},
+  {code:'et',name:'Estonian',native:'Eesti',flag:'🇪🇪',region:'Europe & Americas'},
+  {code:'fi',name:'Finnish',native:'Suomi',flag:'🇫🇮',region:'Europe & Americas'},
+  {code:'fy',name:'Frisian',native:'Frysk',flag:'🇳🇱',region:'Europe & Americas'},
+  {code:'gl',name:'Galician',native:'Galego',flag:'🇪🇸',region:'Europe & Americas'},
+  {code:'el',name:'Greek',native:'Ελληνικά',flag:'🇬🇷',region:'Europe & Americas'},
+  {code:'hu',name:'Hungarian',native:'Magyar',flag:'🇭🇺',region:'Europe & Americas'},
+  {code:'is',name:'Icelandic',native:'Íslenska',flag:'🇮🇸',region:'Europe & Americas'},
+  {code:'ga',name:'Irish',native:'Gaeilge',flag:'🇮🇪',region:'Europe & Americas'},
+  {code:'it',name:'Italian',native:'Italiano',flag:'🇮🇹',region:'Europe & Americas'},
+  {code:'la',name:'Latin',native:'Latina',flag:'🏛️',region:'Europe & Americas'},
+  {code:'lv',name:'Latvian',native:'Latviešu',flag:'🇱🇻',region:'Europe & Americas'},
+  {code:'lt',name:'Lithuanian',native:'Lietuvių',flag:'🇱🇹',region:'Europe & Americas'},
+  {code:'lb',name:'Luxembourgish',native:'Lëtzebuergesch',flag:'🇱🇺',region:'Europe & Americas'},
+  {code:'mk',name:'Macedonian',native:'Македонски',flag:'🇲🇰',region:'Europe & Americas'},
+  {code:'mt',name:'Maltese',native:'Malti',flag:'🇲🇹',region:'Europe & Americas'},
+  {code:'no',name:'Norwegian',native:'Norsk',flag:'🇳🇴',region:'Europe & Americas'},
+  {code:'pl',name:'Polish',native:'Polski',flag:'🇵🇱',region:'Europe & Americas'},
+  {code:'ro',name:'Romanian',native:'Română',flag:'🇷🇴',region:'Europe & Americas'},
+  {code:'gd',name:'Scots Gaelic',native:'Gàidhlig',flag:'🏴',region:'Europe & Americas'},
+  {code:'sr',name:'Serbian',native:'Српски',flag:'🇷🇸',region:'Europe & Americas'},
+  {code:'sk',name:'Slovak',native:'Slovenčina',flag:'🇸🇰',region:'Europe & Americas'},
+  {code:'sl',name:'Slovenian',native:'Slovenščina',flag:'🇸🇮',region:'Europe & Americas'},
+  {code:'sv',name:'Swedish',native:'Svenska',flag:'🇸🇪',region:'Europe & Americas'},
+  {code:'uk',name:'Ukrainian',native:'Українська',flag:'🇺🇦',region:'Europe & Americas'},
+  {code:'cy',name:'Welsh',native:'Cymraeg',flag:'🏴',region:'Europe & Americas'},
+  {code:'co',name:'Corsican',native:'Corsu',flag:'🇫🇷',region:'Europe & Americas'},
+  {code:'ht',name:'Haitian Creole',native:'Kreyòl ayisyen',flag:'🇭🇹',region:'Europe & Americas'},
+  {code:'haw',name:'Hawaiian',native:'ʻŌlelo Hawaiʻi',flag:'🇺🇸',region:'Europe & Americas'},
+  {code:'mi',name:'Maori',native:'Te Reo Māori',flag:'🇳🇿',region:'Europe & Americas'},
+  {code:'sm',name:'Samoan',native:'Samoa',flag:'🇼🇸',region:'Europe & Americas'},
+  {code:'qu',name:'Quechua',native:'Runasimi',flag:'🇵🇪',region:'Europe & Americas'},
+  {code:'ay',name:'Aymara',native:'Aymar aru',flag:'🇧🇴',region:'Europe & Americas'},
+  {code:'gn',name:'Guarani',native:"Avañe'ẽ",flag:'🇵🇾',region:'Europe & Americas'},
+  // Middle East & Central Asia
+  {code:'hy',name:'Armenian',native:'Հայերեն',flag:'🇦🇲',region:'Middle East & Central Asia'},
+  {code:'az',name:'Azerbaijani',native:'Azərbaycan',flag:'🇦🇿',region:'Middle East & Central Asia'},
+  {code:'eu',name:'Basque',native:'Euskera',flag:'🇪🇸',region:'Middle East & Central Asia'},
+  {code:'fa',name:'Persian',native:'فارسی',flag:'🇮🇷',region:'Middle East & Central Asia'},
+  {code:'ka',name:'Georgian',native:'ქართული',flag:'🇬🇪',region:'Middle East & Central Asia'},
+  {code:'iw',name:'Hebrew',native:'עברית',flag:'🇮🇱',region:'Middle East & Central Asia'},
+  {code:'kk',name:'Kazakh',native:'Қазақ',flag:'🇰🇿',region:'Middle East & Central Asia'},
+  {code:'ku',name:'Kurdish',native:'Kurdî',flag:'🌍',region:'Middle East & Central Asia'},
+  {code:'ckb',name:'Kurdish (Sorani)',native:'کوردی',flag:'🌍',region:'Middle East & Central Asia'},
+  {code:'ky',name:'Kyrgyz',native:'Кыргызча',flag:'🇰🇬',region:'Middle East & Central Asia'},
+  {code:'mn',name:'Mongolian',native:'Монгол',flag:'🇲🇳',region:'Middle East & Central Asia'},
+  {code:'ps',name:'Pashto',native:'پښتو',flag:'🇦🇫',region:'Middle East & Central Asia'},
+  {code:'tg',name:'Tajik',native:'Тоҷикӣ',flag:'🇹🇯',region:'Middle East & Central Asia'},
+  {code:'tk',name:'Turkmen',native:'Türkmen',flag:'🇹🇲',region:'Middle East & Central Asia'},
+  {code:'uz',name:'Uzbek',native:"O'zbek",flag:'🇺🇿',region:'Middle East & Central Asia'},
+  {code:'dv',name:'Dhivehi',native:'ދިވެހި',flag:'🇲🇻',region:'Middle East & Central Asia'},
+  // Africa
+  {code:'am',name:'Amharic',native:'አማርኛ',flag:'🇪🇹',region:'Africa'},
+  {code:'ha',name:'Hausa',native:'Hausa',flag:'🇳🇬',region:'Africa'},
+  {code:'ig',name:'Igbo',native:'Igbo',flag:'🇳🇬',region:'Africa'},
+  {code:'mg',name:'Malagasy',native:'Malagasy',flag:'🇲🇬',region:'Africa'},
+  {code:'ny',name:'Nyanja (Chichewa)',native:'Chichewa',flag:'🇲🇼',region:'Africa'},
+  {code:'sn',name:'Shona',native:'chiShona',flag:'🇿🇼',region:'Africa'},
+  {code:'so',name:'Somali',native:'Soomaali',flag:'🇸🇴',region:'Africa'},
+  {code:'st',name:'Sesotho',native:'Sesotho',flag:'🇱🇸',region:'Africa'},
+  {code:'sw',name:'Swahili',native:'Kiswahili',flag:'🇰🇪',region:'Africa'},
+  {code:'xh',name:'Xhosa',native:'isiXhosa',flag:'🇿🇦',region:'Africa'},
+  {code:'yi',name:'Yiddish',native:'יידיש',flag:'🌍',region:'Africa'},
+  {code:'yo',name:'Yoruba',native:'Yorùbá',flag:'🇳🇬',region:'Africa'},
+  {code:'zu',name:'Zulu',native:'isiZulu',flag:'🇿🇦',region:'Africa'},
+  {code:'bm',name:'Bambara',native:'Bamanankan',flag:'🇲🇱',region:'Africa'},
+  {code:'ee',name:'Ewe',native:'Eʋegbe',flag:'🇬🇭',region:'Africa'},
+  {code:'lg',name:'Luganda',native:'Luganda',flag:'🇺🇬',region:'Africa'},
+  {code:'ln',name:'Lingala',native:'Lingála',flag:'🇨🇩',region:'Africa'},
+  {code:'om',name:'Oromo',native:'Afaan Oromoo',flag:'🇪🇹',region:'Africa'},
+  {code:'ti',name:'Tigrinya',native:'ትግርኛ',flag:'🇪🇷',region:'Africa'},
+  {code:'ts',name:'Tsonga',native:'Xitsonga',flag:'🇿🇦',region:'Africa'},
+  {code:'ak',name:'Twi (Akan)',native:'Twi',flag:'🇬🇭',region:'Africa'},
+  {code:'nso',name:'Sepedi',native:'Sepedi',flag:'🇿🇦',region:'Africa'},
+  {code:'kri',name:'Krio',native:'Krio',flag:'🇸🇱',region:'Africa'},
+  {code:'lus',name:'Mizo',native:'Mizo tawng',flag:'🇮🇳',region:'Africa'},
+];
+
+// Build language dropdown
+function buildLangList(filter=''){
+  const list=document.getElementById('langList');
+  list.innerHTML='';
+  const groups={};
+  LANGS.forEach(l=>{
+    if(!filter||l.name.toLowerCase().includes(filter.toLowerCase())||l.native.toLowerCase().includes(filter.toLowerCase())){
+      if(!groups[l.region])groups[l.region]=[];
+      groups[l.region].push(l);
+    }
+  });
+  Object.keys(groups).forEach(region=>{
+    if(!filter){const r=document.createElement('div');r.className='lang-region';r.textContent=region;list.appendChild(r);}
+    groups[region].forEach(l=>{
+      const d=document.createElement('div');
+      d.className='lang-opt'+(l.code==='en'?' active':'');
+      d.innerHTML=`<span class="lf">${l.flag}</span><span>${l.native}</span>`;
+      d.onclick=()=>switchLang(l.code,l.flag,l.name);
+      list.appendChild(d);
+    });
+  });
+}
+buildLangList();
+
+function filterLangs(v){buildLangList(v);}
+
+function toggleLangDrop(){
+  document.getElementById('langWrap').classList.toggle('open');
+}
+
+function switchLang(code,flag,name){
+  document.getElementById('lf').textContent=flag;
+  document.getElementById('ll').textContent=code.toUpperCase().substring(0,2);
+  document.getElementById('langWrap').classList.remove('open');
+  // Trigger Google Translate
+  try{
+    const combo=document.querySelector('.goog-te-combo');
+    if(combo){
+      combo.value=code;
+      combo.dispatchEvent(new Event('change'));
+    } else {
+      const expiry=new Date();expiry.setFullYear(expiry.getFullYear()+1);
+      document.cookie=`googtrans=/en/${code};expires=${expiry.toGMTString()};path=/`;
+      document.cookie=`googtrans=/en/${code};expires=${expiry.toGMTString()};path=/;domain=.${window.location.hostname}`;
+      if(window.google&&window.google.translate){location.reload();}
+    }
+  }catch(e){}
+  // Update active
+  document.querySelectorAll('.lang-opt').forEach(o=>{
+    o.classList.toggle('active',o.textContent.includes(flag));
+  });
+}
+
+document.addEventListener('click',e=>{
+  if(!document.getElementById('langWrap').contains(e.target))
+    document.getElementById('langWrap').classList.remove('open');
+});
+
+// ==============================
+// THEME
+// ==============================
+function toggleTheme(){
+  const html=document.documentElement;
+  const dark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',dark?'light':'dark');
+  document.getElementById('themeBtn').textContent=dark?'☀️':'🌙';
+  updateNetColors();
+}
+
+// ==============================
+// MOBILE NAV
+// ==============================
+function toggleMobile(){
+  document.getElementById('mNav').classList.toggle('open');
+  document.getElementById('ham').classList.toggle('open');
+}
+
+// ==============================
+// CUSTOM CURSOR
+// ==============================
+const cur=document.getElementById('cursor');
+const curR=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function animCursor(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animCursor);}
+animCursor();
+document.querySelectorAll('a,button,.tag,.sk-card,.proj-card,.cert-card,.tool-item,.hof-card,.test-card,.blog-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{curR.style.width='60px';curR.style.height='60px';curR.style.opacity='0.8';});
+  el.addEventListener('mouseleave',()=>{curR.style.width='36px';curR.style.height='36px';curR.style.opacity='0.5';});
+});
+
+// ==============================
+// NETWORK CANVAS
+// ==============================
+const cv=document.getElementById('net-canvas');
+const cx2=cv.getContext('2d');
+let W,H,nodes=[];
+const NC=80;
+let netC='#00ff9d';
+function updateNetColors(){netC=document.documentElement.getAttribute('data-theme')==='light'?'#007a4d':'#00ff9d';}
+function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+resize();window.addEventListener('resize',()=>{resize();initN();});
+class Node{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.r=Math.random()*2+1;this.p=Math.random()*Math.PI*2;}update(){this.x+=this.vx;this.y+=this.vy;this.p+=.025;if(this.x<-10||this.x>W+10||this.y<-10||this.y>H+10)this.reset();}}
+function initN(){nodes=Array.from({length:NC},()=>new Node());}initN();
+let pmx=-9999,pmy=-9999;
+document.addEventListener('mousemove',e=>{pmx=e.clientX;pmy=e.clientY;});
+function drawN(){
+  cx2.clearRect(0,0,W,H);
+  nodes.forEach(n=>n.update());
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<130){cx2.beginPath();cx2.strokeStyle=netC;cx2.globalAlpha=(1-d/130)*.3;cx2.lineWidth=.5;cx2.moveTo(nodes[i].x,nodes[i].y);cx2.lineTo(nodes[j].x,nodes[j].y);cx2.stroke();}
+    }
+    const mdx=nodes[i].x-pmx,mdy=nodes[i].y-pmy,md=Math.sqrt(mdx*mdx+mdy*mdy);
+    if(md<160){cx2.beginPath();cx2.strokeStyle=netC;cx2.globalAlpha=(1-md/160)*.55;cx2.lineWidth=.8;cx2.moveTo(nodes[i].x,nodes[i].y);cx2.lineTo(pmx,pmy);cx2.stroke();}
+  }
+  nodes.forEach(n=>{const ps=.5+Math.sin(n.p)*.5;cx2.beginPath();cx2.arc(n.x,n.y,n.r,0,Math.PI*2);cx2.fillStyle=netC;cx2.globalAlpha=.6+ps*.3;cx2.fill();});
+  cx2.globalAlpha=1;requestAnimationFrame(drawN);
+}drawN();
+
+// ==============================
+// LOADER
+// ==============================
+const BOOT=[
+  {t:'$ sudo ./initialize_portfolio.sh',c:'cmd',d:0},
+  {t:'[OK] Establishing encrypted TLS connection...',c:'ok',d:400},
+  {t:'[OK] Loading security modules (CEH, OSCP)...',c:'ok',d:800},
+  {t:'[WARN] 3 unauthorized scan attempts detected...',c:'warn',d:1200},
+  {t:'[OK] Firewall rules applied (DROP CHAIN)...',c:'ok',d:1500},
+  {t:'[OK] Decrypting portfolio data (AES-256)...',c:'ok',d:1800},
+  {t:'[OK] 150+ language packs loaded...',c:'ok',d:2100},
+  {t:'[OK] All systems operational. Access granted.',c:'ok',d:2500},
+];
+function runLoader(){
+  const b=document.getElementById('ld-body'),bar=document.getElementById('ld-bar'),pct=document.getElementById('ld-pct');
+  BOOT.forEach((l,i)=>{
+    setTimeout(()=>{
+      const s=document.createElement('div');s.className='ld-line show';
+      s.innerHTML=`<span class="${l.c}">${l.t}</span>`;b.appendChild(s);b.scrollTop=b.scrollHeight;
+      const p=Math.round(((i+1)/BOOT.length)*100);bar.style.width=p+'%';pct.textContent=p+'%';
+    },l.d);
+  });
+  setTimeout(()=>{document.getElementById('loader').classList.add('done');animCounters();},3100);
+}runLoader();
+
+// ==============================
+// TYPING EFFECT
+// ==============================
+const ROLES=['Penetration Tester','Security Researcher','Ethical Hacker','Bug Bounty Hunter','Red Team Operator','SOC Analyst L3','Freelance CyberSec Expert'];
+let ri=0,ci=0,del=false;
+function type(){
+  const cur=ROLES[ri],el=document.getElementById('typedRole');if(!el)return;
+  el.textContent=del?cur.slice(0,--ci):cur.slice(0,++ci);
+  if(!del&&ci===cur.length){del=true;setTimeout(type,1800);return;}
+  if(del&&ci===0){del=false;ri=(ri+1)%ROLES.length;}
+  setTimeout(type,del?40:75);
+}type();
+
+// ==============================
+// CLOCK
+// ==============================
+function updateClock(){const n=new Date();document.getElementById('clockBar').textContent=`SYS: ${n.toLocaleTimeString('en-GB')} | ${n.toLocaleDateString('en-GB')}`;}
+setInterval(updateClock,1000);updateClock();
+
+// ==============================
+// COUNTER ANIMATION
+// ==============================
+function animCounter(el,target){let c=0;const step=Math.ceil(target/55);const iv=setInterval(()=>{c=Math.min(c+step,target);el.textContent=c+'+';if(c>=target)clearInterval(iv);},28);}
+function animCounters(){document.querySelectorAll('[data-count]').forEach(el=>animCounter(el,parseInt(el.dataset.count)));}
+
+// ==============================
+// SCROLL REVEAL + SKILL BARS
+// ==============================
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.sk-b').forEach(b=>{if(b.dataset.w)b.style.width=b.dataset.w;});
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+
+// ==============================
+// SKILL TREE (RPG STYLE SVG)
+// ==============================
+function buildSkillTree(){
+  const svg=document.getElementById('skill-tree-svg');
+  const nodes2=[
+    {id:0,x:400,y:40,label:'CYBERSEC',sub:'Core',color:'#00ff9d',level:5},
+    {id:1,x:150,y:130,label:'WEB',sub:'Pentest',color:'#00cfff',level:4,parent:0},
+    {id:2,x:400,y:130,label:'NETWORK',sub:'Security',color:'#00cfff',level:4,parent:0},
+    {id:3,x:650,y:130,label:'MALWARE',sub:'Analysis',color:'#ff2d55',level:3,parent:0},
+    {id:4,x:60,y:240,label:'OWASP',sub:'Top 10',color:'#00ff9d',level:4,parent:1},
+    {id:5,x:200,y:240,label:'API',sub:'Security',color:'#00ff9d',level:3,parent:1},
+    {id:6,x:320,y:240,label:'RECON',sub:'OSINT',color:'#ffd60a',level:4,parent:2},
+    {id:7,x:470,y:240,label:'EXPLOIT',sub:'Dev',color:'#ffd60a',level:3,parent:2},
+    {id:8,x:590,y:240,label:'REVERSE',sub:'Eng.',color:'#ff2d55',level:4,parent:3},
+    {id:9,x:720,y:240,label:'FORENSICS',sub:'',color:'#ff2d55',level:3,parent:3},
+    {id:10,x:60,y:360,label:'XSS/SQLI',sub:'',color:'#00ff9d',level:5,parent:4},
+    {id:11,x:200,y:360,label:'JWT',sub:'Attacks',color:'#00cfff',level:3,parent:5},
+    {id:12,x:320,y:360,label:'SHODAN',sub:'',color:'#ffd60a',level:4,parent:6},
+    {id:13,x:470,y:360,label:'METASPLOIT',sub:'',color:'#ffd60a',level:5,parent:7},
+    {id:14,x:590,y:360,label:'IDA PRO',sub:'',color:'#ff2d55',level:4,parent:8},
+    {id:15,x:720,y:360,label:'GHIDRA',sub:'',color:'#ff2d55',level:4,parent:9},
+  ];
+  let html='';
+  // Draw edges
+  nodes2.forEach(n=>{
+    if(n.parent!==undefined){
+      const p=nodes2.find(x=>x.id===n.parent);
+      html+=`<line x1="${p.x}" y1="${p.y+22}" x2="${n.x}" y2="${n.y-22}" stroke="${n.color}" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4,4"/>`;
+    }
+  });
+  // Draw nodes
+  nodes2.forEach(n=>{
+    const stars='★'.repeat(n.level)+'☆'.repeat(5-n.level);
+    html+=`<g class="tree-node" transform="translate(${n.x},${n.y})" style="cursor:default">
+      <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" fill="rgba(10,30,34,0.8)" stroke="${n.color}" stroke-width="1.5"/>
+      <text text-anchor="middle" y="4" font-family="Orbitron,monospace" font-size="7" fill="${n.color}" font-weight="700">${n.label}</text>
+      ${n.sub?`<text text-anchor="middle" y="32" font-family="Share Tech Mono,monospace" font-size="7" fill="rgba(176,212,216,0.5)">${n.sub}</text>`:''}
+      <text text-anchor="middle" y="42" font-family="monospace" font-size="7" fill="${n.color}" opacity="0.6">${stars}</text>
+    </g>`;
+  });
+  svg.innerHTML=html;
+}
+buildSkillTree();
+
+// ==============================
+// INTERACTIVE TERMINAL
+// ==============================
+const TERM_CMDS={
+  help:{out:()=>[{c:'i',t:'Available commands:'},
+    {c:'d',t:'  whoami    — Who am I?'},
+    {c:'d',t:'  skills    — List my skills'},
+    {c:'d',t:'  projects  — View my projects'},
+    {c:'d',t:'  contact   — Get contact info'},
+    {c:'d',t:'  certs     — View certifications'},
+    {c:'d',t:'  tools     — Hacking tools I use'},
+    {c:'d',t:'  ctf       — CTF stats'},
+    {c:'d',t:'  hire      — How to hire me'},
+    {c:'d',t:'  social    — Social media links'},
+    {c:'d',t:'  joke      — Security joke 😄'},
+    {c:'d',t:'  clear     — Clear terminal'},
+  ]},
+  whoami:{out:()=>[
+    {c:'p',t:'Name: Your Name'},
+    {c:'p',t:'Role: Cybersecurity Expert & Ethical Hacker'},
+    {c:'p',t:'Location: Dhaka, Bangladesh 🇧🇩'},
+    {c:'p',t:'Experience: 5+ years'},
+    {c:'p',t:'Status: ✅ Available for hire'},
+  ]},
+  skills:{out:()=>[
+    {c:'i',t:'Core Skills:'},
+    {c:'p',t:'[████████████████████] Penetration Testing — 95%'},
+    {c:'p',t:'[██████████████████░░] Network Security   — 90%'},
+    {c:'p',t:'[█████████████████░░░] Malware Analysis   — 85%'},
+    {c:'p',t:'[██████████████████░░] SOC & Threat Intel — 88%'},
+    {c:'p',t:'[████████████████░░░░] Programming        — 80%'},
+    {c:'p',t:'[███████████████░░░░░] Cloud Security     — 78%'},
+  ]},
+  projects:{out:()=>[
+    {c:'i',t:'Recent Projects:'},
+    {c:'d',t:'1. E-Commerce VAPT — Critical SQLi + XSS found'},
+    {c:'d',t:'2. Corporate Network Audit — 15 critical issues'},
+    {c:'d',t:'3. Recon Automation Tool — 340 GitHub stars'},
+    {c:'d',t:'4. Critical CVE Discovery — $4,500 bounty'},
+    {c:'p',t:'Type "hire" to work with me →'},
+  ]},
+  contact:{out:()=>[
+    {c:'p',t:'📧 Email:    your.email@domain.com'},
+    {c:'p',t:'💼 LinkedIn: linkedin.com/in/yourname'},
+    {c:'p',t:'🐙 GitHub:   github.com/yourname'},
+    {c:'p',t:'🐦 Twitter:  @yourhandle'},
+    {c:'i',t:'↑ Scroll to contact form for project inquiries'},
+  ]},
+  certs:{out:()=>[
+    {c:'i',t:'Certifications:'},
+    {c:'p',t:'✅ CEH — EC-Council (2022)'},
+    {c:'p',t:'✅ OSCP — Offensive Security (2023)'},
+    {c:'p',t:'✅ CompTIA Security+ (2021)'},
+    {c:'p',t:'✅ AWS Security Specialty (2023)'},
+    {c:'p',t:'✅ CISSP — ISC² (2024)'},
+  ]},
+  tools:{out:()=>[
+    {c:'i',t:'My Arsenal:'},
+    {c:'d',t:'Kali Linux • Burp Suite Pro • Metasploit'},
+    {c:'d',t:'Nmap • Wireshark • IDA Pro • Ghidra'},
+    {c:'d',t:'Splunk • BloodHound • Cobalt Strike'},
+    {c:'d',t:'Python • Bash • PowerShell'},
+  ]},
+  ctf:{out:()=>[
+    {c:'i',t:'CTF Stats:'},
+    {c:'p',t:'Rank: Top 5% on HackTheBox'},
+    {c:'p',t:'Rank: Top 3% on TryHackMe'},
+    {c:'p',t:'CTFs Won: 12'},
+    {c:'p',t:'Hall of Fame: 5 platforms'},
+    {c:'p',t:'Total Bounties: $15,000+'},
+  ]},
+  hire:{out:()=>[
+    {c:'i',t:'Freelance Services:'},
+    {c:'d',t:'• Basic Audit:    $299/project'},
+    {c:'d',t:'• Full Pentest:   $999/project'},
+    {c:'d',t:'• Enterprise:     Custom/month'},
+    {c:'p',t:'📧 Contact: your.email@domain.com'},
+    {c:'p',t:'🔒 NDA available on request'},
+  ]},
+  social:{out:()=>[
+    {c:'p',t:'GitHub:   github.com/yourname'},
+    {c:'p',t:'LinkedIn: linkedin.com/in/yourname'},
+    {c:'p',t:'Twitter:  @yourhandle'},
+    {c:'p',t:'HackerOne: hackerone.com/yourname'},
+    {c:'p',t:'TryHackMe: tryhackme.com/p/yourname'},
+  ]},
+  joke:{out:()=>[
+    {c:'p',t:'Why do hackers prefer dark mode?'},
+    {c:'p',t:'Because light attracts bugs! 🐛😄'},
+  ]},
+  clear:{out:'CLEAR'},
+};
+
+function initTerm(){
+  const out=document.getElementById('itermOut');
+  function addLine(cls,txt){const s=document.createElement('span');s.className=`iterm-line ${cls}`;s.textContent=txt;out.appendChild(s);out.scrollTop=out.scrollHeight;}
+  addLine('i','Welcome to CyberSec Terminal v2.0');addLine('d','Type "help" to see available commands.');addLine('d','');
+  document.getElementById('itermIn').addEventListener('keydown',e=>{
+    if(e.key!=='Enter')return;
+    const cmd=e.target.value.trim().toLowerCase();e.target.value='';if(!cmd)return;
+    addLine('p','guest@cybersec:~$ '+cmd);
+    const c=TERM_CMDS[cmd];
+    if(!c){addLine('e',`Command not found: ${cmd}. Type "help"`);addLine('d','');}
+    else if(c.out==='CLEAR'){out.innerHTML='';}
+    else{c.out().forEach(l=>addLine(l.c,l.t));addLine('d','');}
+  });
+}initTerm();
+
+// ==============================
+// CTF
+// ==============================
+function checkCTF(){
+  const ans=document.getElementById('ctfInput').value.trim();
+  const res=document.getElementById('ctfResult');
+  res.style.display='block';
+  if(ans==='CTF{H367_H4CKER_EXPERT}'||ans==='CTF{H367_HACKER_EXPERT}'){
+    res.className='ctf-result win';
+    res.textContent='🎉 Correct! You decoded the Base64 string. Flag: CTF{H367_H4CKER_EXPERT} — Well done, hacker!';
+    document.getElementById('hmAttempts').textContent=parseInt(document.getElementById('hmAttempts').textContent||0)+1;
+  } else {
+    res.className='ctf-result lose';
+    res.textContent='❌ Wrong flag. Hint: Base64 decode the string. Tools: CyberChef, atob(), or command line.';
+    document.getElementById('hmAttempts').textContent=parseInt(document.getElementById('hmAttempts').textContent||0)+1;
+  }
+}
+
+// ==============================
+// GITHUB STATS
+// ==============================
+async function loadGH(){
+  const user='yourGithubUsername'; // CHANGE THIS
+  try{
+    const r=await fetch(`https://api.github.com/users/${user}`);
+    const d=await r.json();
+    if(d.login){
+      document.getElementById('ghUser').textContent=`📡 @${d.login} — ${d.bio||'Security Researcher'}`;
+      document.getElementById('ghRepos').textContent=d.public_repos;
+      document.getElementById('ghFollowers').textContent=d.followers;
+      document.getElementById('ghGists').textContent=d.public_gists;
+      const r2=await fetch(`https://api.github.com/users/${user}/repos?sort=stars&per_page=4`);
+      const repos=await r2.json();
+      let stars=0;repos.forEach(r=>stars+=r.stargazers_count);
+      document.getElementById('ghStars').textContent=stars;
+      const rList=document.getElementById('ghRepoList');
+      repos.forEach(repo=>{
+        rList.innerHTML+=`<div class="gh-repo"><div class="gh-rname">📦 ${repo.name}</div><div class="gh-rdesc">${repo.description||'No description'}</div><div class="gh-rmeta"><span>⭐ ${repo.stargazers_count}</span><span>🍴 ${repo.forks_count}</span><span>${repo.language||'N/A'}</span></div></div>`;
+      });
+    }
+  }catch(e){document.getElementById('ghUser').textContent='📡 Configure GitHub username in portfolio to see live stats';}
+}loadGH();
+
+// ==============================
+// CVE FEED
+// ==============================
+function toggleCVE(){document.getElementById('cvePanel').classList.toggle('open');}
+async function loadCVE(){
+  try{
+    // Using a CORS-friendly public CVE API
+    const r=await fetch('https://cve.circl.lu/api/last/8');
+    const data=await r.json();
+    const list=document.getElementById('cveList');
+    list.innerHTML='';
+    document.getElementById('cveTime').textContent=new Date().toLocaleTimeString();
+    data.forEach(cve=>{
+      const score=parseFloat(cve.cvss)||0;
+      const cls=score>=7?'score-high':score>=4?'score-med':'score-low';
+      list.innerHTML+=`<div class="cve-item"><span class="cve-id">${cve.id||'CVE-UNKNOWN'}</span><span class="cve-summary">${(cve.summary||'No description').substring(0,120)}...</span><div class="cve-score"><span class="${cls}">CVSS: ${score||'N/A'}</span></div></div>`;
+    });
+  }catch(e){
+    document.getElementById('cveList').innerHTML='<div style="padding:14px;font-family:var(--mono);font-size:.72rem;color:var(--dim)">CVE feed requires internet connection</div>';
+  }
+}loadCVE();setInterval(loadCVE,300000);
+
+// ==============================
+// AI CHATBOT
+// ==============================
+const BOT_KB=[
+  {q:['hello','hi','hey','start'],a:'Hello! 👋 I\'m SecBot, your cybersecurity assistant. I can answer questions about services, skills, availability, and pricing. How can I help?'},
+  {q:['price','cost','rate','pricing','charge'],a:'Services start at $299 for basic web audits, $999 for full penetration testing, and custom pricing for enterprise. Check the Services section or contact directly for a quote!'},
+  {q:['pentest','penetration','vapt','vulnerability'],a:'I specialize in Web App VAPT, Network Penetration Testing, API Security Testing, and Red Team operations. Tools: Burp Suite, Metasploit, Nmap, and custom Python scripts.'},
+  {q:['hire','available','freelance','work','job'],a:'Yes, I\'m currently available for freelance projects! I work with clients worldwide. You can book via the contact form or email directly. NDA available on request.'},
+  {q:['cert','certification','qualified','oscp','ceh'],a:'Certifications: CEH (EC-Council), OSCP (Offensive Security), CompTIA Security+, AWS Security, CISSP, eWPT, GCIH. All industry-recognized.'},
+  {q:['experience','years','background','profile'],a:'5+ years in cybersecurity. Worked as SOC Analyst, Penetration Tester, and now Senior Security Analyst. 50+ projects completed, 30+ satisfied clients worldwide.'},
+  {q:['contact','email','reach','message'],a:'📧 Email: your.email@domain.com\n💼 LinkedIn: linkedin.com/in/yourname\n🐙 GitHub: github.com/yourname\nOr use the contact form below!'},
+  {q:['bug','bounty','hof','hackerone','bugcrowd'],a:'Active bug bounty hunter with $15,000+ in total rewards! Hall of Fame on HackerOne, Bugcrowd, and 3 private programs. Specialty: SSRF, RCE chains, Auth bypasses.'},
+  {q:['tool','kali','burp','metasploit','nmap'],a:'My toolkit: Kali Linux, Burp Suite Pro, Metasploit, Nmap, Wireshark, IDA Pro, Ghidra, BloodHound, Cobalt Strike, Splunk, and custom Python tools.'},
+  {q:['language','speak','bangla','bengali'],a:'I speak Bengali (native), English (fluent), and basic Arabic. The portfolio supports 150+ languages via Google Translate!'},
+  {q:['thanks','thank','good','great','awesome'],a:'Thank you! 😊 Feel free to ask anything else or head to the contact section to get started on a project!'},
+];
+
+const QUICK_REPLIES=['💰 Pricing','🔐 Pentest','📜 Certs','📞 Contact','⚡ Availability'];
+
+function toggleChat(){
+  document.getElementById('chatWin').classList.toggle('open');
+  document.querySelector('.chat-badge').style.display='none';
+  if(document.getElementById('chatWin').classList.contains('open')&&document.getElementById('chatMsgs').children.length===0){
+    botMsg('Hi! I\'m SecBot 🛡️ Your cybersecurity assistant. Ask me about services, pricing, or skills!');
+    buildQuick();
+  }
+}
+
+function botMsg(txt){
+  const m=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='chat-msg bot';d.textContent=txt;m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+
+function userMsg(txt){
+  const m=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='chat-msg user';d.textContent=txt;m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+
+function buildQuick(){
+  const q=document.getElementById('chatQuick');q.innerHTML='';
+  QUICK_REPLIES.forEach(r=>{const b=document.createElement('button');b.className='qbtn';b.textContent=r;b.onclick=()=>{userMsg(r);processBotReply(r);};q.appendChild(b);});
+}
+
+function sendChat(){
+  const inp=document.getElementById('chatIn');const txt=inp.value.trim();if(!txt)return;
+  userMsg(txt);inp.value='';processBotReply(txt);
+}
+
+function processBotReply(txt){
+  const tl=txt.toLowerCase();
+  let reply='I\'m not sure about that. Try asking about pricing, pentesting, certifications, or contact info! 😊';
+  for(const entry of BOT_KB){
+    if(entry.q.some(q=>tl.includes(q))){reply=entry.a;break;}
+  }
+  setTimeout(()=>botMsg(reply),500);
+}
+
+document.getElementById('chatIn').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+
+// ==============================
+// QR CODE
+// ==============================
+let qrGenerated=false;
+function openQR(){
+  document.getElementById('qr-modal').classList.add('open');
+  if(!qrGenerated){
+    try{
+      new QRCode(document.getElementById('qr-canvas'),{text:'mailto:your.email@domain.com',width:160,height:160,colorDark:'#00ff9d',colorLight:'#020c0e'});
+      qrGenerated=true;
+    }catch(e){document.getElementById('qr-canvas').getContext('2d').fillStyle='#00ff9d';document.getElementById('qr-canvas').getContext('2d').fillText('QR',70,80);}
+  }
+}
+function closeQR(){document.getElementById('qr-modal').classList.remove('open');}
+
+// ==============================
+// RESUME DOWNLOAD
+// ==============================
+function downloadResume(){
+  const a=document.createElement('a');a.href='resume.pdf';a.download='YourName_CyberSec_Resume.pdf';
+  alert('📄 Place your resume.pdf in the same folder as this HTML file.\nUpdate the downloadResume() function with the correct path.');
+}
+
+// ==============================
+// NDA REQUEST
+// ==============================
+function requestNDA(){
+  alert('🔒 NDA Request\n\nPlease email: your.email@domain.com\nSubject: NDA Request\n\nI will respond within 24 hours with a standard NDA for review and signing.');
+}
+
+// ==============================
+// SEND MESSAGE
+// ==============================
+function sendMessage(){
+  const btn=document.getElementById('sendBtn');
+  btn.textContent='MESSAGE SENT ✓';btn.style.background='var(--n)';btn.style.color='#000';
+  setTimeout(()=>{btn.textContent='SEND MESSAGE';btn.style.background='';btn.style.color='';},3000);
+}
+
+// ==============================
+// VISITOR COUNTER
+// ==============================
+try{
+  let v=parseInt(localStorage.getItem('vc')||'1000');v++;
+  localStorage.setItem('vc',v);
+  document.getElementById('visCount').textContent=v.toLocaleString();
+}catch(e){document.getElementById('visCount').textContent='1,024';}
+
+// ==============================
+// HACK ME ATTEMPTS
+// ==============================
+try{
+  const att=parseInt(localStorage.getItem('hma')||'0');
+  document.getElementById('hmAttempts').textContent=att;
+}catch(e){}
+
+// ==============================
+// KONAMI EASTER EGG
+// ==============================
+const KONAMI=[38,38,40,40,37,39,37,39,66,65];let ki=0;
+document.addEventListener('keydown',e=>{
+  if(e.keyCode===KONAMI[ki]){ki++;if(ki===KONAMI.length){ki=0;document.getElementById('easter').classList.add('show');}}else ki=0;
+});
+function closeEaster(){document.getElementById('easter').classList.remove('show');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeEaster();closeQR();}});
+
+// ==============================
+// PWA
+// ==============================
+if('serviceWorker' in navigator){
+  const sw=`self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>new Response('Offline'))));`;
+  const blob=new Blob([sw],{type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+}
+</script>
+</body>
+</html>
